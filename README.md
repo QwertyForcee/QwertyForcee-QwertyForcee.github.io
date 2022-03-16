@@ -17,28 +17,46 @@ https://www.figma.com/proto/nirHUjLx70NS84917imFhu/Untitled?node-id=366%3A3&scal
 4. 
     User:
         - id `number`
+
         - name `string`
+        
         - email `string`
+
         - password `string`
+
         - avatar `blob`
+
 
     Ticket:
         - id `number`
+
         - type `string`
+        
         - assignedTo `number`
+        
         - description `string`
+        
         - project `Project`
+        
         - comments `Comment[]`
 
     Project:
+        
         - id `number`
+        
         - name `string`
+        
         - members `User[]`
+        
         - tickets `Ticket[]`
+        
         - avatar `blob`
+        
         - updatedOn `string | Date`
 
     Comment: 
         - user `User`
+        
         - text `string`
+       
         - ticket `Ticket`
