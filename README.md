@@ -16,6 +16,7 @@ https://www.figma.com/proto/nirHUjLx70NS84917imFhu/Untitled?node-id=366%3A3&scal
 
 4. 
     User:
+        
         - id `number`
 
         - name `string`
@@ -28,6 +29,7 @@ https://www.figma.com/proto/nirHUjLx70NS84917imFhu/Untitled?node-id=366%3A3&scal
 
 
     Ticket:
+        
         - id `number`
 
         - type `string`
@@ -55,6 +57,7 @@ https://www.figma.com/proto/nirHUjLx70NS84917imFhu/Untitled?node-id=366%3A3&scal
         - updatedOn `string | Date`
 
     Comment: 
+        
         - user `User`
         
         - text `string`
