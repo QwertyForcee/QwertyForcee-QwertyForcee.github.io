@@ -1,4 +1,4 @@
-Быстров Максим  гр. 953504
+## Быстров Максим  гр. 953504
 
 1. Приложение для работы команды над проектом. Можно создавать тикеты, описывать фичу/баг, ставить приоритет выполнения задачи, назначать кому-то эту задачу, оставлять комментарии. Смотря на доску - наблюдаешь в каком сейчас состоянии разработка проекта, и кто из команды чем занят. 
 
@@ -14,3 +14,31 @@ https://www.figma.com/proto/nirHUjLx70NS84917imFhu/Untitled?node-id=366%3A3&scal
     5) Статистика
     6) Список участников проекта + список проектов
 
+4. 
+    User:
+        - id `number`
+        - name `string`
+        - email `string`
+        - password `string`
+        - avatar `blob`
+
+    Ticket:
+        - id `number`
+        - type `string`
+        - assignedTo `number`
+        - description `string`
+        - project `Project`
+        - comments `Comment[]`
+
+    Project:
+        - id `number`
+        - name `string`
+        - members `User[]`
+        - tickets `Ticket[]`
+        - avatar `blob`
+        - updatedOn `string | Date`
+
+    Comment: 
+        - user `User`
+        - text `string`
+        - ticket `Ticket`
