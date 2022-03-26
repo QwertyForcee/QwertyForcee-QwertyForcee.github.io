@@ -1,0 +1,81 @@
+.about-section{
+  margin-top: 40px;
+  margin-bottom: 80px;
+  background: white;
+  color: #ACACAC;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.about-section hr {
+
+  display:block;
+  background-color:#ACACAC;
+  height: 1px;
+  width: 80%;
+}
+
+.about-section h1{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-weight: 400;
+}
+
+.auth-section{
+  height: max-content;
+  background: #BEF2E3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form {
+  margin: 100px 0 100px 0;
+  font-size: 170%;
+  overflow: auto;
+}
+
+.auth-form input {
+  width: 300px;
+  padding: 5px;
+  font-size: 75%;
+  background: #D7D7D7;
+  color: #848484;
+}
+
+.auth-form input::placeholder {
+  color: #848484;
+}
+
+.email-control {
+  display: flex;
+  justify-content: space-between;
+  color: #740B6A;
+}
+
+.email-control input {
+  border: 1px solid #740B6A;
+}
+
+
+.password-control {
+  color: #AC39A1;
+}
+
+.password-control input {
+  margin-left: 15px;
+  border: 1px solid #AC39A1;
+}
+
+.submit {
+  font-size: 85%;
+  padding: 10px;
+  background: #EAEAEA;
+  border: 1px solid #D7D7D7;
+  width: 100%;
+}

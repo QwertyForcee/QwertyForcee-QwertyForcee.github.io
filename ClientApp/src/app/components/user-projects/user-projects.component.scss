@@ -1,0 +1,59 @@
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.projects-section h2 {
+  font-weight: 400;
+  font-size: 150%;
+}
+
+
+.projects-table {
+  margin: 0 15% 0 15%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 55%;
+  font-size: 120%;
+  overflow: auto;
+}
+
+.projects-table thead th:nth-child(1) {
+  width: 5%;
+}
+
+.projects-table thead th:nth-child(2) {
+  width: 40%;
+}
+
+.projects-table thead th:nth-child(3) {
+  width: 25%;
+}
+
+.projects-table thead th:nth-child(4) {
+  width: 10%;
+}
+
+.projects-table thead th:nth-child(5) {
+  width: 5%;
+}
+.projects-table th td{
+  padding: 10px;
+}
+
+.projects-table img{
+  width: 35px;
+  height: 35px;
+}
+
+.date {
+  color: #5C5B60;
+}
+
+.action {
+  text-align: start;
+
+  text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+.main-header {
+  display: flex;
+  align-items: center;
+  //justify-content: flex-start;
+  background: #F5E9FF;
+  width: 100%;
+  height: 100%;
+}
+.main-header svg{
+  margin-left: 10%;
+  margin-right: 15px;
+}
+.main-header h3 {
+  color: #420B50;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  font-size: 27px;
+  margin: 17px 0 17px 0;
+}

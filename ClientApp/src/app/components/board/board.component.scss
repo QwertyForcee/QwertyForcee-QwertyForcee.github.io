@@ -1,0 +1,25 @@
+.board-screen {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-item-but{
+  font-size: 125%;
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #C2F9EF;
+  border-radius: 5%;
+  background: #C2F9EF;
+}
+
+.filters-section {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filters-section li {
+  list-style-type: none;
+  padding: 15px;
+}
