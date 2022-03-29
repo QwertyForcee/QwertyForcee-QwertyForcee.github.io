@@ -11,6 +11,7 @@ import { ProjectOverviewComponent } from './components/project-overview/project-
 import { BoardComponent } from './components/board/board.component';
 import { ProjectStatsComponent } from './components/project-stats/project-stats.component';
 import { ProjectTeamComponent } from './components/project-team/project-team.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProjectTeamComponent } from './components/project-team/project-team.com
     BoardComponent,
     ProjectStatsComponent,
     ProjectTeamComponent,
+    TicketComponent,
   ],
   imports: [
     BrowserModule,
