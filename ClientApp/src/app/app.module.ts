@@ -12,6 +12,7 @@ import { BoardComponent } from './components/board/board.component';
 import { ProjectStatsComponent } from './components/project-stats/project-stats.component';
 import { ProjectTeamComponent } from './components/project-team/project-team.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { NewTicketComponent } from './components/new-ticket/new-ticket.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
     ProjectStatsComponent,
     ProjectTeamComponent,
     TicketComponent,
+    NewTicketComponent,
   ],
   imports: [
     BrowserModule,

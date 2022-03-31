@@ -1,0 +1,31 @@
+.modal {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.modal-content {
+    margin-top: 15%;
+    margin-right: 15%;
+    margin-left: 15%;
+    width: 70%;
+    background: #FDFBFF;
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    background: #D5F7EE;
+    font-size: 120%;
+    text-decoration: underline;
+}
+
+.body {
+
+}

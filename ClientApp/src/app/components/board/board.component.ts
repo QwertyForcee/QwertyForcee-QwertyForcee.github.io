@@ -12,4 +12,9 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  creatingNewTicket = false;
+
+  createNewTicket(){
+    this.creatingNewTicket = true;
+  }
 }

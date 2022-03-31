@@ -1,6 +1,9 @@
 <div class="board-screen">
   <section class="filters-section">
-    <button class="new-item-but">New Item</button>
+    <button (click)="createNewTicket()" class="new-item-but">New Item</button>
+    <app-new-ticket *ngIf="creatingNewTicket">
+
+    </app-new-ticket>
     <ul>
       <li>
         Type
