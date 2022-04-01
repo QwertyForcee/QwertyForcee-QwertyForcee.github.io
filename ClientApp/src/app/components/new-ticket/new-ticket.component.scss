@@ -11,21 +11,67 @@
 }
 
 .modal-content {
-    margin-top: 15%;
+    margin-top: 10%;
     margin-right: 15%;
     margin-left: 15%;
     width: 70%;
     background: #FDFBFF;
     display: flex;
+    flex-direction: column;
 }
 
-.header {
+.window-header {
     width: 100%;
     background: #D5F7EE;
     font-size: 120%;
     text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-.body {
+.window-header p {
+  display: flex;
+  margin: 0;
+  padding: 5px;
+}
 
+.window-body {
+  background: #FDFBFF;
+  font-size: 120%;
+  display: flex;
+}
+
+.window-body form {
+  display: flex;
+  width: 100%;
+  margin-left: 3%;
+  color: #454448;
+}
+
+.window-body button {
+  font-size: 120%;
+  background: unset;
+  border: 0;
+  height: min-content;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #454448;
+  text-decoration: underline;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.controls-container input {
+  width: 80%;
+}
+
+.one-line-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
