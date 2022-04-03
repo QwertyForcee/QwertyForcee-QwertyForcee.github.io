@@ -15,6 +15,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { NewTicketComponent } from './components/new-ticket/new-ticket.component';
 import { ViewTicketComponent } from './components/view-ticket/view-ticket.component';
 import { BoardSettingsComponent } from './components/board-settings/board-settings.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { BoardSettingsComponent } from './components/board-settings/board-settin
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
