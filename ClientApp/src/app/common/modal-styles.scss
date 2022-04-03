@@ -1,0 +1,28 @@
+.modal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.window-header {
+  width: 100%;
+  font-size: 120%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.window-body {
+  font-size: 120%;
+  display: flex;
+}

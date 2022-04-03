@@ -1,32 +1,15 @@
-.modal {
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-
-
-}
+@import url("../../common/modal-styles.scss");
 
 .modal-content {
     margin-top: 10%;
     margin-right: 15%;
     margin-left: 15%;
-    width: 70%;
     background: #FDFBFF;
-    display: flex;
-    flex-direction: column;
-}
+  }
 
 .window-header {
-    width: 100%;
     background: #D5F7EE;
-    font-size: 120%;
     text-decoration: underline;
-    display: flex;
-    justify-content: space-between;
     padding: 10px;
 }
 
@@ -37,8 +20,6 @@
 
 .window-body {
   background: #FDFBFF;
-  font-size: 120%;
-  display: flex;
 }
 
 .window-body form {
@@ -49,12 +30,8 @@
   color: #454448;
 }
 
-.window-body select, input {
-  font-size: 90%;
-}
-
 .window-body button {
-  font-size: 120%;
+  font-size: 100%;
   background: unset;
   border: 0;
   height: min-content;
@@ -62,20 +39,49 @@
   padding-right: 2%;
   color: #454448;
   text-decoration: underline;
+  font-weight: 400;
 }
 
 .controls-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
+}
+
+.controls-container input, textarea, select {
+  border: 2px solid #AFAFAF;
+  font-size: 90%;
+}
+
+.controls-container select {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .controls-container input {
   width: 80%;
 }
 
+.controls-container textarea {
+  width: 100%;
+}
+
 .one-line-controls {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+@media (max-width: 800px) {
+  .modal-content {
+    margin: 0;
+  }
+
+  .one-line-controls {
+    flex-direction: column;
+  }
+
+  .window-body form {
+    flex-direction: column;
+  }
 }

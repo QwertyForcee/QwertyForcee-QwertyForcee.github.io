@@ -1,0 +1,90 @@
+@import url("../../common/modal-styles.scss");
+
+
+
+.modal-content {
+  margin-top: 10%;
+  margin-right: 15%;
+  margin-left: 15%;
+  background: #FDFBFF;
+}
+
+.window-header {
+  background: #D5F7EE;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.window-header p {
+  display: flex;
+  margin: 0;
+}
+
+.window-body {
+  background: #FDFBFF;
+}
+
+.window-body form {
+  font-size: 150%;
+  display: flex;
+  width: 100%;
+  margin-left: 3%;
+  color: #454448;
+}
+
+.window-body button {
+  font-size: 100%;
+  background: unset;
+  border: 0;
+  height: min-content;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #454448;
+  background: #D79EE5;
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.controls-container input, textarea, select {
+  border: 2px solid #AFAFAF;
+  font-size: 90%;
+}
+
+.controls-container select {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.controls-container input {
+  width: 80%;
+}
+
+.controls-container textarea {
+  width: 100%;
+}
+
+.one-line-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media (max-width: 800px) {
+  .modal-content {
+    margin: 0;
+  }
+
+  .one-line-controls {
+    flex-direction: column;
+  }
+
+  .window-body form {
+    flex-direction: column;
+  }
+}
