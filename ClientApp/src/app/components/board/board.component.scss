@@ -48,6 +48,13 @@
   align-content: right;
 }
 
+.filters-section select {
+  border: 0px;
+  background: unset;
+  font-size: 110%;
+  text-align: right;
+}
+
 .board-section {
   display: flex;
   flex-direction: column;
@@ -103,11 +110,15 @@
 }
 
 @media (max-width: 800px) {
+  .board-screen {
+    flex-direction: column;
+  }
+
   .board-header {
-    width: 125px;
+    width: 200px;
   }
 
   .board-column {
-    width: 120px;
+    width: 200px;
   }
 }

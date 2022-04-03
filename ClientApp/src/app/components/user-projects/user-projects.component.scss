@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .projects-section h2 {
@@ -56,4 +55,21 @@
   text-align: start;
 
   text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .projects-table {
+    margin: 0;
+    width: 100%;
+  }
+
+  .projects-section {
+    overflow: scroll;
+  }
+
+  .projects-table tr {
+    width: 100%;
+    display: flex;
+  }
+
 }

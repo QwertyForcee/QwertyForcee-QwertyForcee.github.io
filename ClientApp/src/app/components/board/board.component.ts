@@ -8,9 +8,6 @@ import { Observable, Subject } from 'rxjs';
 })
 export class BoardComponent implements OnInit {
 
-  viewingTicket: Subject<boolean> = new Subject<boolean>();
-  viewingTicket$: Observable<boolean> = this.viewingTicket.asObservable();
-
   constructor() { }
 
   ngOnInit(): void {
@@ -23,8 +20,10 @@ export class BoardComponent implements OnInit {
   createNewTicket(){
     this.creatingNewTicket = true;
   }
-
-  setViewTicket(value:boolean){
-    this.viewTicket = value;
+  
+  openTicket() {
+    console.log('opening');
+    
+    this.viewTicket = true;
   }
 }

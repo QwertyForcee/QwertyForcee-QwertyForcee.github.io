@@ -14,6 +14,7 @@ import { ProjectTeamComponent } from './components/project-team/project-team.com
 import { TicketComponent } from './components/ticket/ticket.component';
 import { NewTicketComponent } from './components/new-ticket/new-ticket.component';
 import { ViewTicketComponent } from './components/view-ticket/view-ticket.component';
+import { BoardSettingsComponent } from './components/board-settings/board-settings.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ViewTicketComponent } from './components/view-ticket/view-ticket.compon
     TicketComponent,
     NewTicketComponent,
     ViewTicketComponent,
+    BoardSettingsComponent,
   ],
   imports: [
     BrowserModule,

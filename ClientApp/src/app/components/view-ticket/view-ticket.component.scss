@@ -37,12 +37,17 @@
   background: unset;
   border: 0;
   height: min-content;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
   color: #454448;
   background: #D79EE5;
   text-decoration: underline;
   font-weight: 400;
+  width: 20%;
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  width: min-content;
 }
 
 .controls-container {
@@ -62,7 +67,7 @@
 }
 
 .controls-container input {
-  width: 80%;
+  width: 70%;
 }
 
 .controls-container textarea {

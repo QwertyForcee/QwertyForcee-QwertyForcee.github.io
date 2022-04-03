@@ -87,3 +87,14 @@
   border: 1px solid #D7D7D7;
   width: 100%;
 }
+
+@media (max-width: 800px) {
+  .email-control, .password-control {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .password-control input {
+    margin-left: 0;
+  }
+}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BoardSettingsComponent } from './components/board-settings/board-settings.component';
 import { BoardComponent } from './components/board/board.component';
 import { ProjectOverviewComponent } from './components/project-overview/project-overview.component';
 import { ProjectStatsComponent } from './components/project-stats/project-stats.component';
@@ -11,7 +12,7 @@ const projectOverviewRoutes: Routes = [
   { path: 'board', component: BoardComponent},
   { path: 'stats', component: ProjectStatsComponent},
   { path: 'team', component: ProjectTeamComponent},
-
+  { path: 'setting', component: BoardSettingsComponent}
 ]
 
 const routes: Routes = [

@@ -1,0 +1,65 @@
+:host {
+    display: flex;
+    height: 100%;
+}
+
+:host h3 {
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.board-setting {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-setting ul {
+    width: 60%;
+    height: 100%;
+    padding: 0;
+    background-color: #CCCCCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}   
+
+.board-setting li {
+    font-size: 120%;
+    width: 80%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.ticket-setting {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.templates-container {
+    width: 90%;
+    height: 100%;
+    background-color: #F8F7F9;
+    float: left;
+}
+
+@media (max-width: 800px) {
+    :host {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .board-setting {
+        width: 100%;
+    }
+}

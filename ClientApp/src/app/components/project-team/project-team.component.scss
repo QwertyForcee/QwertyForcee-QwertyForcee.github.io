@@ -108,3 +108,23 @@
   text-decoration: underline;
 
 }
+
+@media (max-width: 800px) {
+
+  :host {
+    flex-direction: column;
+  }
+
+  .project-team {
+    width: 100%;
+    overflow: scroll;
+    margin: 0;
+    align-items: flex-start;
+  }
+
+  .members-table {
+    font-size: 90%;
+  }
+  
+
+}
