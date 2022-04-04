@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Host, HostListener, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ export class TicketComponent implements OnInit {
 
   @Output() openingTicket = new EventEmitter<void>(); 
 
-  constructor() { }
+  constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
     
@@ -20,4 +20,14 @@ export class TicketComponent implements OnInit {
     this.openingTicket.emit();
   }
 
+  @HostListener('dragstart', ['$event'])
+  dragStart(event: any){
+    this.element.nativeElement.classList.add('dragging');
+  }
+
+  @HostListener('dragend', ['$event'])
+  dragEnd(event: any){
+    this.element.nativeElement.classList.remove('dragging');
+    
+  }
 }

@@ -12,7 +12,14 @@ export class BoardComponent implements OnInit {
   constructor(private mockService: MockServerService) { }
 
   ngOnInit(): void {
-
+    const headers = document.querySelectorAll('.board-column');
+    headers.forEach(header => {
+      header.addEventListener('dragover', (e)=> {
+        const draggable = document.querySelector('.dragging')!;
+        header.appendChild(draggable);
+      })
+    })
+     
   }
 
   creatingNewTicket = false;
