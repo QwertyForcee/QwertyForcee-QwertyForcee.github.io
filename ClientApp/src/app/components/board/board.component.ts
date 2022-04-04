@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { MockServerService } from 'src/app/services/mock-server.service';
 
 @Component({
   selector: 'app-board',
@@ -8,7 +9,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mockService: MockServerService) { }
 
   ngOnInit(): void {
 
@@ -20,10 +21,8 @@ export class BoardComponent implements OnInit {
   createNewTicket(){
     this.creatingNewTicket = true;
   }
-  
+
   openTicket() {
-    console.log('opening');
-    
     this.viewTicket = true;
   }
 }

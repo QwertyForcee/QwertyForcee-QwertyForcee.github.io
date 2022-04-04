@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Comment } from '../models/comment';
 import { Project } from '../models/project';
+import { Status } from '../models/status';
 import { Ticket } from '../models/ticket';
 import { User } from '../models/user';
 
@@ -11,12 +12,15 @@ export class MockServerService {
 
   constructor() {
     this.setProjects();
+    this.setStatuses();
+    this.setTickets();
   }
 
   projects: Project[] = [];
   users: User[] = [];
   tickets: Ticket[] = [];
   comments: Comment[] = [];
+  statuses: Status[] = [];
 
   getAllProjects(): Project[] {
     return this.projects;
@@ -60,4 +64,97 @@ export class MockServerService {
     ];
   }
 
+  private setStatuses() {
+    this.statuses = [
+      {
+        id: 1,
+        name: 'New',
+      },
+      {
+        id: 2,
+        name: 'Approved',
+      },
+      {
+        id: 3,
+        name: 'Develop',
+      },
+      {
+        id: 4,
+        name: 'Ready',
+      },
+      {
+        id: 5,
+        name: 'QA',
+      },
+      {
+        id: 6,
+        name: 'Testing',
+      },
+      {
+        id: 7,
+        name: 'Done',
+      },
+
+      {
+        id: 7,
+        name: 'Done2',
+      },
+    ]
+  }
+
+  private setTickets(){
+    this.tickets = [
+      {
+        statusId: 1,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 1,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+      {
+        statusId: 1,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+      {
+        statusId: 1,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 2,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 2,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 3,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 4,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+
+      {
+        statusId: 5,
+        type: 'bug',
+        description: 'fix button on sign up form',
+      } as Ticket,
+    ]
+  }
 }
