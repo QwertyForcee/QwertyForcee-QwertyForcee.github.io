@@ -1,4 +1,4 @@
-<div class="ticket-base" draggable="true">
+<div class="ticket-base" (contextmenu)="onRightClick($event)" draggable="true">
   <div class="vertical-line"></div>
   <div class="horizontal-content">
     <h4>
@@ -22,4 +22,8 @@
     </p>
 
   </div>
+</div>
+
+<div class="context-menu" *ngIf="showContextMenu">
+  <p>privet</p>
 </div>

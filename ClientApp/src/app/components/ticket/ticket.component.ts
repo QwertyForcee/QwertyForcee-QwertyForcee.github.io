@@ -12,6 +12,8 @@ export class TicketComponent implements OnInit {
   @Input() ticket:Ticket | null= null;
   @Output() openingTicket = new EventEmitter<void>();
 
+  showContextMenu = false;
+
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
@@ -30,6 +32,13 @@ export class TicketComponent implements OnInit {
   @HostListener('dragend', ['$event'])
   dragEnd(event: any){
     this.element.nativeElement.classList.remove('dragging');
+  }
 
+  onRightClick(event: MouseEvent){
+    event.preventDefault(); 
+    this.showContextMenu = true;
+    const menu = this.element.nativeElement.querySelector('.context-menu');
+    menu.style.top = `${event.clientY}px`;
+    menu.style.left = `${event.clientX}px`;
   }
 }

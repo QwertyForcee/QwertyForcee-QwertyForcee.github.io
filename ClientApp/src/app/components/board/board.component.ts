@@ -12,6 +12,8 @@ import { MockServerService } from 'src/app/services/mock-server.service';
 export class BoardComponent implements OnInit, AfterViewChecked {
 
   headersEventsInited = false;
+  filters = {};
+
   tickets: Ticket[] = [];
   statuses: Status[] = [];
 
@@ -25,9 +27,11 @@ export class BoardComponent implements OnInit, AfterViewChecked {
       this.headersEventsInited = true;
       const headers = this.element.nativeElement.querySelectorAll('div.board-column');
       headers.forEach((header: any) => {
-        header.addEventListener('dragover', (e: any) => {
+        header.addEventListener('dragover', (e: any) => {          
           const draggable = document.querySelector('.dragging')!;
-          header.appendChild(draggable);
+          if (draggable){
+            header.appendChild(draggable);
+          }          
         })
       })
     }

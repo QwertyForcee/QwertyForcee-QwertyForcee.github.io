@@ -57,3 +57,8 @@
 .horizontal-content a {
   text-decoration: none;
 }
+
+.context-menu {
+  position: absolute;
+  z-index: 101;
+}
