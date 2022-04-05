@@ -63,63 +63,17 @@
 
     </ul>
   </section>
-  <section class="board-section">
+  <section class="board-section" let>
     <div class="board-head">
-      <p class="board-header">
-        New
-      </p>
-      <p class="board-header">
-        Approved
-      </p>
-      <p class="board-header">
-        Develop
-      </p>
-      <p class="board-header">
-        Ready
-      </p>
-      <p class="board-header">
-        QA
-      </p>
-      <p class="board-header">
-        Testing
-      </p>
-      <p class="board-header">
-        Done
-      </p>
-      <p class="board-header">
-        Done2
+      <p class="board-header" *ngFor="let status of statuses">
+        {{status.name}}
       </p>
     </div>
     <div class="board-body">
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      <div class="board-column" *ngFor="let status of statuses">
+        <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket()"></app-ticket>
+      </div>
 
-
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
-      <div class="board-column">
-        <app-ticket (openingTicket)="openTicket()"></app-ticket>
-      </div>
     </div>
   </section>
 </div>

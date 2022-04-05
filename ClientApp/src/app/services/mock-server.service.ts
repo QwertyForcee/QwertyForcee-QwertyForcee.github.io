@@ -11,6 +11,7 @@ import { User } from '../models/user';
 export class MockServerService {
 
   constructor() {
+    this.setUsers();
     this.setProjects();
     this.setStatuses();
     this.setTickets();
@@ -27,6 +28,24 @@ export class MockServerService {
   }
   getProjects(userId: number): Project[] {
     return this.projects.filter(proj => proj.members.some(membr => membr.id === userId));
+  }
+
+  getTickets(){
+    return this.tickets;
+  }
+
+  getStatuses(){
+    return this.statuses;
+  }
+
+  private setUsers(){
+    this.users = [
+      {
+        id:1,
+        name: 'Maxim',
+        email: 'admin@admin.com'
+      } as User,
+    ]
   }
 
   private setProjects(): void {
@@ -105,56 +124,69 @@ export class MockServerService {
   private setTickets(){
     this.tickets = [
       {
+        id: 3001,
         statusId: 1,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix button on sign up form and make it do 10.5 api calls to currency.com',
       } as Ticket,
 
       {
+        id: 3002,
         statusId: 1,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix select on sign up form',
       } as Ticket,
       {
+        id: 3015,
         statusId: 1,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix 2 buttons on sign up form',
       } as Ticket,
       {
+        id: 3006,
         statusId: 1,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix logout',
       } as Ticket,
 
       {
+        id: 3018,
         statusId: 2,
         type: 'bug',
         description: 'fix button on sign up form',
       } as Ticket,
 
       {
+        id: 3020,
         statusId: 2,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix everything on sign up form',
       } as Ticket,
 
       {
+        id: 3007,
         statusId: 3,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix styles',
       } as Ticket,
 
       {
+        id: 3066,
         statusId: 4,
         type: 'bug',
-        description: 'fix button on sign up form',
+        description: 'fix all buttons',
       } as Ticket,
 
       {
+        id: 3024,
         statusId: 5,
         type: 'bug',
         description: 'fix button on sign up form',
       } as Ticket,
-    ]
+    ];
+
+    this.tickets.forEach(ticket=>{
+      ticket.assignedTo = this.users[0];
+    });
   }
 }
