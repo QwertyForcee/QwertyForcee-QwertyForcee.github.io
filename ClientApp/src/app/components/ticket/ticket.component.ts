@@ -34,11 +34,24 @@ export class TicketComponent implements OnInit {
     this.element.nativeElement.classList.remove('dragging');
   }
 
+  @HostListener('click', ['$event'])
+  click(event: any){
+    this.showContextMenu = false;
+  }
+
+  @HostListener('mouseleave', ['$event'])
+  mouseLeave(event: any){
+    this.showContextMenu = false;
+  }
+
   onRightClick(event: MouseEvent){
-    event.preventDefault(); 
+    event.preventDefault();
     this.showContextMenu = true;
-    const menu = this.element.nativeElement.querySelector('.context-menu');
-    menu.style.top = `${event.clientY}px`;
-    menu.style.left = `${event.clientX}px`;
+    setTimeout(()=>{
+      const menu = this.element.nativeElement.querySelector('.context-menu');
+      menu.style.top = `${event.clientY}px`;
+      menu.style.left = `${event.clientX}px`;
+    },0)
+
   }
 }
