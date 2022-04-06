@@ -6,6 +6,7 @@ export interface Ticket {
   id: number;
   type: string;
   assignedTo: User;
+  priority: string;
   statusId: number;
   status: Status;
   description: string;

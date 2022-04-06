@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { BoardFilter } from 'src/app/models/board-filter';
 import { Status } from 'src/app/models/status';
 import { Ticket } from 'src/app/models/ticket';
 import { MockServerService } from 'src/app/services/mock-server.service';
@@ -12,7 +13,11 @@ import { MockServerService } from 'src/app/services/mock-server.service';
 export class BoardComponent implements OnInit, AfterViewChecked {
 
   headersEventsInited = false;
-  filters = {};
+  filters: BoardFilter = {
+    type: [],
+    assignedTo: [],
+    priority: []
+  } as BoardFilter;
 
   tickets: Ticket[] = [];
   statuses: Status[] = [];
@@ -27,11 +32,11 @@ export class BoardComponent implements OnInit, AfterViewChecked {
       this.headersEventsInited = true;
       const headers = this.element.nativeElement.querySelectorAll('div.board-column');
       headers.forEach((header: any) => {
-        header.addEventListener('dragover', (e: any) => {          
+        header.addEventListener('dragover', (e: any) => {
           const draggable = document.querySelector('.dragging')!;
-          if (draggable){
+          if (draggable) {
             header.appendChild(draggable);
-          }          
+          }
         })
       })
     }
@@ -44,7 +49,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   }
 
   getTicketsByStatusId(statusId: number) {
-    return this.tickets.filter(t => t.statusId === statusId);
+    return this.tickets.filter(t => t.statusId === statusId && this.applyFilters(t));
   }
 
   createNewTicket() {
@@ -54,4 +59,14 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   openTicket() {
     this.viewTicket = true;
   }
+
+  applyFilters(ticket: Ticket) {
+    const [type, assignedTo, priority] = [
+      this.filters.type.length === 0 ? true : this.filters.type.some(t => t === ticket.type),
+      this.filters.assignedTo.length === 0 ? true : this.filters.assignedTo.some(t=> t===ticket.assignedTo), 
+      this.filters.priority.length === 0 ? true : this.filters.priority.some(t=> t===ticket.priority)
+    ];
+    return type && assignedTo && priority;
+  }
+
 }
