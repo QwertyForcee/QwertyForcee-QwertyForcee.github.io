@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Comment } from '../models/comment';
+import { Priority } from '../models/priority';
 import { Project } from '../models/project';
 import { Status } from '../models/status';
 import { Ticket } from '../models/ticket';
@@ -12,6 +13,7 @@ export class MockServerService {
 
   constructor() {
     this.setUsers();
+    this.setPriorities();
     this.setProjects();
     this.setStatuses();
     this.setTickets();
@@ -22,6 +24,7 @@ export class MockServerService {
   tickets: Ticket[] = [];
   comments: Comment[] = [];
   statuses: Status[] = [];
+  priorities: Priority[] = [];
 
   getAllProjects(): Project[] {
     return this.projects;
@@ -30,21 +33,34 @@ export class MockServerService {
     return this.projects.filter(proj => proj.members.some(membr => membr.id === userId));
   }
 
-  getTickets(){
+  getTickets() {
     return this.tickets;
   }
 
-  getStatuses(){
+  getStatuses() {
     return this.statuses;
   }
 
-  private setUsers(){
+  getPriorities() {
+    return this.priorities;
+  }
+
+  private setUsers() {
     this.users = [
       {
-        id:1,
+        id: 1,
         name: 'Maxim',
         email: 'admin@admin.com'
       } as User,
+    ]
+  }
+
+  private setPriorities() {
+    this.priorities = [
+      { id: 1, name: 'high priority' },
+      { id: 2, name: 'medium priority' },
+      { id: 3, name: 'low priority' },
+
     ]
   }
 
@@ -121,12 +137,15 @@ export class MockServerService {
     ]
   }
 
-  private setTickets(){
+  private setTickets() {
+    const [low_pr, medium_pr, high_pr] = [...this.priorities];
+
     this.tickets = [
       {
         id: 3001,
         statusId: 1,
         type: 'bug',
+        priority: low_pr,
         description: 'fix button on sign up form and make it do 10.5 api calls to currency.com',
       } as Ticket,
 
@@ -134,18 +153,21 @@ export class MockServerService {
         id: 3002,
         statusId: 1,
         type: 'bug',
+        priority: low_pr,
         description: 'fix select on sign up form',
       } as Ticket,
       {
         id: 3015,
         statusId: 1,
         type: 'bug',
+        priority: medium_pr,
         description: 'fix 2 buttons on sign up form',
       } as Ticket,
       {
         id: 3006,
         statusId: 1,
         type: 'bug',
+        priority: medium_pr,
         description: 'fix logout',
       } as Ticket,
 
@@ -153,6 +175,7 @@ export class MockServerService {
         id: 3018,
         statusId: 2,
         type: 'bug',
+        priority: medium_pr,
         description: 'fix button on sign up form',
       } as Ticket,
 
@@ -160,6 +183,7 @@ export class MockServerService {
         id: 3020,
         statusId: 2,
         type: 'bug',
+        priority: low_pr,
         description: 'fix everything on sign up form',
       } as Ticket,
 
@@ -167,6 +191,7 @@ export class MockServerService {
         id: 3007,
         statusId: 3,
         type: 'bug',
+        priority: high_pr,
         description: 'fix styles',
       } as Ticket,
 
@@ -174,6 +199,7 @@ export class MockServerService {
         id: 3066,
         statusId: 4,
         type: 'bug',
+        priority: high_pr,
         description: 'fix all buttons',
       } as Ticket,
 
@@ -181,11 +207,12 @@ export class MockServerService {
         id: 3024,
         statusId: 5,
         type: 'bug',
+        priority: low_pr,
         description: 'fix button on sign up form',
       } as Ticket,
     ];
 
-    this.tickets.forEach(ticket=>{
+    this.tickets.forEach(ticket => {
       ticket.assignedTo = this.users[0];
     });
   }

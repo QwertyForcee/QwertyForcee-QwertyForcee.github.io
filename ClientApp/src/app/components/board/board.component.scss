@@ -22,6 +22,10 @@
   background: #C2F9EF;
 }
 
+.new-item-but:focus {
+  outline-color: #6bb7a9;
+}
+
 .filters-section {
   width: 300px;
   display: flex;

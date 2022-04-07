@@ -1,32 +1,33 @@
 <div class="board-screen">
   <section class="filters-section">
     <button (click)="createNewTicket()" class="new-item-but">New Item</button>
-    <app-new-ticket *ngIf="creatingNewTicket"></app-new-ticket>
-    <app-view-ticket *ngIf="viewTicket"></app-view-ticket>
+    <app-new-ticket *ngIf="creatingNewTicket" (closeEmitter)="closeNewTicketView()"></app-new-ticket>
+    <app-view-ticket *ngIf="viewTicket" (closeEmitter)="closeTicketView()"></app-view-ticket>
 
     <ul>
       <li>
-        <select name="" id="">
+        <select name="" id="" (change)="filterChange($event)">
           <option value="" disabled selected>
             Type
             <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
             </svg>
           </option>
-          <option value="Feature">Bug</option>
-          <option value="Bug">Feature</option>
-
+          <option value="">Any</option>
+          <option value="Bug">Bug</option>
+          <option value="Feature">Feature</option>
         </select>
 
       </li>
       <li>
-        <select name="" id="">
-          <option value="" disabled selected>
+        <select name="" id="" (change)="filterChange($event)">
+          <option value="0" disabled selected>
             Assigned To
             <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
             </svg>
           </option>
+          <option value="">Any</option>
           <option value="">Maxim</option>
           <option value="">Maxim</option>
           <option value="">Maxim</option>
@@ -47,16 +48,15 @@
       </li> -->
 
       <li>
-        <select name="" id="">
-          <option value="" disabled selected>
+        <select name="" id="" (change)="filterChange($event, 'priority')">
+          <option value="0" disabled selected>
             Priority
             <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
             </svg>
           </option>
-          <option value=""> 1. High priority</option>
-          <option value=""> 2. Medium priority</option>
-          <option value=""> 3. Low priority</option>
+          <option value="0">Any</option>
+          <option value="" *ngFor="let pr of priorities" value="{{pr.id}}">{{pr.name}}</option>
 
         </select>
       </li>

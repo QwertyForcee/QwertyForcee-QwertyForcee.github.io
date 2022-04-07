@@ -16,6 +16,7 @@ import { NewTicketComponent } from './components/new-ticket/new-ticket.component
 import { ViewTicketComponent } from './components/view-ticket/view-ticket.component';
 import { BoardSettingsComponent } from './components/board-settings/board-settings.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BaseModalWindowComponent } from './components/base-modal-window/base-modal-window.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NewTicketComponent,
     ViewTicketComponent,
     BoardSettingsComponent,
+    BaseModalWindowComponent,
   ],
   imports: [
     BrowserModule,
