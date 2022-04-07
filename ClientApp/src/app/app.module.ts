@@ -17,6 +17,7 @@ import { ViewTicketComponent } from './components/view-ticket/view-ticket.compon
 import { BoardSettingsComponent } from './components/board-settings/board-settings.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BaseModalWindowComponent } from './components/base-modal-window/base-modal-window.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BaseModalWindowComponent } from './components/base-modal-window/base-mo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

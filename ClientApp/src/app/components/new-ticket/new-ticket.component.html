@@ -22,17 +22,17 @@
       </p>
     </section>
     <section class="window-body">
-      <form action="">
+      <form [formGroup]="newTicketForm" (ngSubmit)="submit()">
         <div class="controls-container">
           <p>
             <label for="">title: </label>
-            <input type="text" placeholder="your title here...">
+            <input formControlName="title" type="text" placeholder="your title here...">
           </p>
 
           <div class="one-line-controls">
             <p>
               <label for="">type:</label>
-              <select name="" id="">
+              <select formControlName="type" name="" id="">
                 <option value="">feature</option>
                 <option value="">bug</option>
               </select>
@@ -40,15 +40,13 @@
 
             <p>
               <label for="">priority:</label>
-              <select name="" id="">
-                <option value="">1. high priority</option>
-                <option value="">2. medium priority</option>
-                <option value="">3. low priority</option>
+              <select formControlName="priority" name="" id="">
+                <option *ngFor="let pr of priorities" value="{{pr.id}}">{{pr.name}}</option>
               </select>
             </p>
           </div>
           <p>
-            <select name="" id="">
+            <select formControlName="assignedTo" name="" id="">
               <option value="">
                 Maxim</option>
               <option value="">
@@ -58,7 +56,7 @@
 
           <p>
             <label for="">description:</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea formControlName="description" id="" cols="30" rows="10"></textarea>
           </p>
         </div>
         <p>

@@ -45,12 +45,21 @@ export class MockServerService {
     return this.priorities;
   }
 
+  getUsers(){
+    return this.users;
+  }
+
   private setUsers() {
     this.users = [
       {
         id: 1,
         name: 'Maxim',
         email: 'admin@admin.com'
+      } as User,
+      {
+        id: 2,
+        name: 'Joe',
+        email: 'joe@joe.com'
       } as User,
     ]
   }
@@ -139,10 +148,11 @@ export class MockServerService {
 
   private setTickets() {
     const [low_pr, medium_pr, high_pr] = [...this.priorities];
-
+    const [user1, user2] = [...this.users];
     this.tickets = [
       {
         id: 3001,
+        assignedTo: user1,
         statusId: 1,
         type: 'bug',
         priority: low_pr,
@@ -151,6 +161,7 @@ export class MockServerService {
 
       {
         id: 3002,
+        assignedTo: user1,
         statusId: 1,
         type: 'bug',
         priority: low_pr,
@@ -158,6 +169,7 @@ export class MockServerService {
       } as Ticket,
       {
         id: 3015,
+        assignedTo: user1,
         statusId: 1,
         type: 'bug',
         priority: medium_pr,
@@ -165,6 +177,7 @@ export class MockServerService {
       } as Ticket,
       {
         id: 3006,
+        assignedTo: user1,
         statusId: 1,
         type: 'bug',
         priority: medium_pr,
@@ -173,6 +186,7 @@ export class MockServerService {
 
       {
         id: 3018,
+        assignedTo: user2,
         statusId: 2,
         type: 'bug',
         priority: medium_pr,
@@ -181,6 +195,7 @@ export class MockServerService {
 
       {
         id: 3020,
+        assignedTo: user2,
         statusId: 2,
         type: 'bug',
         priority: low_pr,
@@ -189,6 +204,7 @@ export class MockServerService {
 
       {
         id: 3007,
+        assignedTo: user2,
         statusId: 3,
         type: 'bug',
         priority: high_pr,
@@ -197,6 +213,7 @@ export class MockServerService {
 
       {
         id: 3066,
+        assignedTo: user2,
         statusId: 4,
         type: 'bug',
         priority: high_pr,
@@ -205,6 +222,7 @@ export class MockServerService {
 
       {
         id: 3024,
+        assignedTo: user1,
         statusId: 5,
         type: 'bug',
         priority: low_pr,
@@ -212,8 +230,5 @@ export class MockServerService {
       } as Ticket,
     ];
 
-    this.tickets.forEach(ticket => {
-      ticket.assignedTo = this.users[0];
-    });
   }
 }

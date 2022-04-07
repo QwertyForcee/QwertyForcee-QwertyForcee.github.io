@@ -20,17 +20,17 @@
 
       </li>
       <li>
-        <select name="" id="" (change)="filterChange($event)">
+        <select name="" id="" (change)="filterChange($event, 'assignedTo')">
           <option value="0" disabled selected>
             Assigned To
             <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
             </svg>
           </option>
-          <option value="">Any</option>
-          <option value="">Maxim</option>
-          <option value="">Maxim</option>
-          <option value="">Maxim</option>
+          <option value="0">Any</option>
+          <option *ngFor="let u of users" value="{{u.id}}">{{u.name}}</option>
+
+
         </select>
       </li>
       <!--<li>
