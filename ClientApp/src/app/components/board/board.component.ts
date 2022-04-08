@@ -76,14 +76,18 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   applyFilters(ticket: Ticket) {
     const [type, assignedTo, priority] = [
       this.filters.type.length === 0 ? true : this.filters.type.some(t => t === ticket.type),
-      this.filters.assignedTo.length === 0 ? true : this.filters.assignedTo.some(t => t === ticket.assignedTo.id || t === 0),
-      this.filters.priority.length === 0 ? true : this.filters.priority.some(t => t === ticket.priority.id || t === 0)
+      this.filters.assignedTo.length === 0 ? true : this.filters.assignedTo.some(t => +t === ticket.assignedTo.id || +t === 0),
+      this.filters.priority.length === 0 ? true : this.filters.priority.some(t => +t === ticket.priority.id || +t === 0)
     ];
     return type && assignedTo && priority;
   }
 
   filterChange(e: any, filterName?: string) {
-    console.log(e.target.value, filterName);
+    if (e && filterName && Object.keys(this.filters).includes(filterName)){
+      const v = [e.target.value];
+      this.filters[filterName as (keyof BoardFilter)] = v;
+    }
+    /*if (e) {
       switch (filterName) {
         case 'priority': {
           this.filters.priority = [+(e.target.value)];
@@ -94,5 +98,6 @@ export class BoardComponent implements OnInit, AfterViewChecked {
           break;
         }
       }
+    }*/
   }
 }

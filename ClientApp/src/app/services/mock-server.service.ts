@@ -49,6 +49,12 @@ export class MockServerService {
     return this.users;
   }
 
+  addNewTicket(ticket:Ticket){
+    if (ticket){
+      this.tickets.push(ticket);
+    }
+  }
+
   private setUsers() {
     this.users = [
       {
