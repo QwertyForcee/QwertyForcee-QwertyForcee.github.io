@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Comment } from '../models/comment';
 import { Priority } from '../models/priority';
 import { Project } from '../models/project';
@@ -17,6 +18,7 @@ export class MockServerService {
     this.setProjects();
     this.setStatuses();
     this.setTickets();
+
   }
 
   projects: Project[] = [];
@@ -26,6 +28,12 @@ export class MockServerService {
   statuses: Status[] = [];
   priorities: Priority[] = [];
 
+  ticketsSub: Subject<Ticket[]> = new Subject<Ticket[]>();
+  tickets$: Observable<Ticket[]> = this.ticketsSub.asObservable();
+
+  ticketsChangedSub: Subject<void>= new Subject<void>();
+  ticketsChanged$:Observable<void> = this.ticketsChangedSub.asObservable();
+
   getAllProjects(): Project[] {
     return this.projects;
   }
@@ -33,8 +41,8 @@ export class MockServerService {
     return this.projects.filter(proj => proj.members.some(membr => membr.id === userId));
   }
 
-  getTickets() {
-    return this.tickets;
+  getTickets(): void{
+    this.ticketsSub.next(this.tickets);
   }
 
   getStatuses() {
@@ -53,6 +61,8 @@ export class MockServerService {
     if (ticket){
       this.tickets.push(ticket);
     }
+    this.ticketsSub.next(this.tickets);
+    //this.ticketsChangedSub.next();    
   }
 
   private setUsers() {

@@ -71,7 +71,7 @@
     </div>
     <div class="board-body">
       <div class="board-column" *ngFor="let status of statuses" draggable="false">
-        <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket()"></app-ticket>
+          <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket()"></app-ticket>
       </div>
 
     </div>

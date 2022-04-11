@@ -18,6 +18,7 @@ import { BoardSettingsComponent } from './components/board-settings/board-settin
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BaseModalWindowComponent } from './components/base-modal-window/base-modal-window.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ViewTicketComponent,
     BoardSettingsComponent,
     BaseModalWindowComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,

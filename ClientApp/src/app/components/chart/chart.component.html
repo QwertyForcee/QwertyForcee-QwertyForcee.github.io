@@ -1,0 +1,11 @@
+<canvas class="chart-canvas">
+
+</canvas>
+<ul class="elements-defenition" *ngIf="useInfoPanel">
+    <li *ngFor="let d of data">
+        <div class="color-square" [style.background]="d.color">
+            
+        </div>
+        {{d.label}}
+    </li>
+</ul>

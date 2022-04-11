@@ -6,6 +6,7 @@ import { Status } from 'src/app/models/status';
 import { Ticket } from 'src/app/models/ticket';
 import { User } from 'src/app/models/user';
 import { MockServerService } from 'src/app/services/mock-server.service';
+import {tap, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +22,8 @@ export class BoardComponent implements OnInit, AfterViewChecked {
     priority: []
   } as BoardFilter;
 
-  tickets: Ticket[] = [];
+  //tickets$: Observable<Ticket[]>;
+  tickets: Ticket[]= [];
   statuses: Status[] = [];
   priorities: Priority[] = [];
   users: User[] = [];
@@ -29,7 +31,16 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   creatingNewTicket = false;
   viewTicket = false;
 
-  constructor(private mockService: MockServerService, private element: ElementRef) { }
+  constructor(private mockService: MockServerService, private element: ElementRef) {
+    this.mockService.tickets$.subscribe(
+      {
+        next: (e)=>{
+          this.tickets = e;
+        }
+      }
+    ); 
+    this.mockService.getTickets(); 
+  }
 
   ngAfterViewChecked(): void {
     if (!this.headersEventsInited) {
@@ -49,11 +60,12 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     this.statuses = this.mockService.getStatuses();
     this.priorities = this.mockService.getPriorities();
-    this.tickets = this.mockService.getTickets();
+    //this.tickets = this.mockService.getTickets();
     this.users = this.mockService.getUsers();
+
   }
 
-  getTicketsByStatusId(statusId: number) {
+  getTicketsByStatusId(statusId: number):Ticket[] {
     return this.tickets.filter(t => t.statusId === statusId && this.applyFilters(t));
   }
 
