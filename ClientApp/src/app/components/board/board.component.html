@@ -1,0 +1,125 @@
+<div class="board-screen">
+  <section class="filters-section">
+    <button (click)="createNewTicket()" class="new-item-but">New Item</button>
+    <app-new-ticket *ngIf="creatingNewTicket"></app-new-ticket>
+    <app-view-ticket *ngIf="viewTicket"></app-view-ticket>
+
+    <ul>
+      <li>
+        <select name="" id="">
+          <option value="" disabled selected>
+            Type
+            <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
+            </svg>
+          </option>
+          <option value="">Bug</option>
+          <option value="">Feature</option>
+
+        </select>
+
+      </li>
+      <li>
+        <select name="" id="">
+          <option value="" disabled selected>
+            Assigned To
+            <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
+            </svg>
+          </option>
+          <option value="">Maxim</option>
+          <option value="">Maxim</option>
+          <option value="">Maxim</option>
+        </select>
+      </li>
+      <!--<li>
+        <select name="" id="">
+          <option value="">
+            Columns
+            <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
+            </svg>
+          </option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </li> -->
+
+      <li>
+        <select name="" id="">
+          <option value="" disabled selected>
+            Priority
+            <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L11.8267 9L22 2" stroke="black" stroke-width="3.5" />
+            </svg>
+          </option>
+          <option value=""> 1. High priority</option>
+          <option value=""> 2. Medium priority</option>
+          <option value=""> 3. Low priority</option>
+
+        </select>
+      </li>
+
+    </ul>
+  </section>
+  <section class="board-section">
+    <div class="board-head">
+      <p class="board-header">
+        New
+      </p>
+      <p class="board-header">
+        Approved
+      </p>
+      <p class="board-header">
+        Develop
+      </p>
+      <p class="board-header">
+        Ready
+      </p>
+      <p class="board-header">
+        QA
+      </p>
+      <p class="board-header">
+        Testing
+      </p>
+      <p class="board-header">
+        Done
+      </p>
+      <p class="board-header">
+        Done2
+      </p>
+    </div>
+    <div class="board-body">
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+
+
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+      <div class="board-column">
+        <app-ticket (openingTicket)="openTicket()"></app-ticket>
+      </div>
+    </div>
+  </section>
+</div>

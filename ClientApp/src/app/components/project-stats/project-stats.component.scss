@@ -1,0 +1,21 @@
+.charts-section {
+    
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-section p{
+    font-size: 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .info-section {
+        flex-direction: column;
+    }
+}

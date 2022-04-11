@@ -1,0 +1,30 @@
+<section class="projects-section">
+  <h2>Maxim Bystrov projects</h2>
+  <table class="projects-table">
+    <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prj of projects">
+        <td>
+          <img [src]="prj.avatar" alt="">
+        </td>
+        <td>
+          {{prj.name}}
+        </td>
+        <td class="date">
+          updated on: {{prj.updatedOn | date: 'shortDate'}}
+        </td>
+        <td class="action">
+          Settings
+        </td>
+        <td class="action">
+          Open
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</section>

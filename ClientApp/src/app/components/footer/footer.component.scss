@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  align-items: center;
+  background: #1C191D;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.footer section{
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+}
+
+.footer {
+  flex-direction: column;
+}
+
+@media (max-width: 800px) {
+  .footer {
+    flex-direction: row;
+  }
+
+  .footer section {
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+}
+
+
+.footer h4{
+  white-space: nowrap;
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
