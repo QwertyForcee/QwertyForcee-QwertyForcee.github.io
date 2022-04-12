@@ -25,7 +25,12 @@
 }
 
 @media (max-width: 800px) {
-    .info-section {
+    .info-section, .charts-section {
         flex-direction: column;
+        overflow: scroll;
+    }
+
+    .charts-section app-chart {
+      margin-bottom: 20px;
     }
 }

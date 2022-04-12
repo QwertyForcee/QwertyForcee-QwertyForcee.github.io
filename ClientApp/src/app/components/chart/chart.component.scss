@@ -1,9 +1,21 @@
 :host{
     display: flex;
+    flex-direction: column;
 }
 
+:host h3 {
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 190%;
+}
+
+.data-section {
+  display: flex;
+}
 .chart-canvas{
     height: 100%;
+    width: 100%;
     object-fit: contain;
 }
 
@@ -18,6 +30,7 @@
     font-size: 100%;
     list-style-type: none;
     display: flex;
+    white-space: nowrap;
 }
 
 .color-square {

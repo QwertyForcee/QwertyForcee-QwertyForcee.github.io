@@ -8,10 +8,11 @@ import { ChartDataModel } from 'src/app/models/chart-data-model';
 })
 export class ChartComponent implements OnInit {
 
-  constructor(private element: ElementRef) { }  
+  constructor(private element: ElementRef) { }
 
   @Input() useInfoPanel = true;
-  @Input() data: ChartDataModel[] = []; 
+  @Input() title = '';
+  @Input() data: ChartDataModel[] = [];
 
   ngOnInit(): void {
     const canvas = this.element.nativeElement.querySelector('.chart-canvas');

@@ -21,6 +21,7 @@
 }
 
 .window-body {
+  flex-direction: column;
   background: #FDFBFF;
 }
 
@@ -91,5 +92,12 @@
 
   .window-body form {
     flex-direction: column;
+  }
+
+  .comment-section {
+    width: 100%;
+    background-color: #FDFBFF;
+    height: min-content;
+    margin-left: 10%;
   }
 }
