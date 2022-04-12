@@ -81,6 +81,22 @@
   justify-content: space-around;
 }
 
+.comment-section {
+  width: 100%;
+  padding-bottom: 50px;
+  background-color: #ffffff;
+  height: min-content;
+}
+
+.comment-container {
+  margin: 15px 5% auto 5%;
+
+}
+
+.comment-container h5, p {
+  margin: 3px;
+}
+
 @media (max-width: 800px) {
   .modal-content {
     margin: 0;
@@ -94,10 +110,6 @@
     flex-direction: column;
   }
 
-  .comment-section {
-    width: 100%;
-    background-color: #FDFBFF;
-    height: min-content;
-    margin-left: 10%;
-  }
+
 }
+
