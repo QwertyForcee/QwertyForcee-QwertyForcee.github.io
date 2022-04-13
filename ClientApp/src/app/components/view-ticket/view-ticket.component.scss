@@ -1,7 +1,6 @@
 @import url("../../common/modal-styles.scss");
 
 
-
 .modal-content {
   margin-top: 10%;
   margin-right: 15%;
@@ -95,6 +94,7 @@
 }
 
 .comment-container h5, p {
+  font-weight: 500;
   margin: 3px;
 }
 

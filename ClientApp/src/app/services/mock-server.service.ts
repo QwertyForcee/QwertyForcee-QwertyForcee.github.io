@@ -172,7 +172,8 @@ export class MockServerService {
         statusId: 1,
         type: 'bug',
         priority: low_pr,
-        description: 'fix button on sign up form and make it do 10.5 api calls to currency.com',
+        title: 'fix button on sign up form and make it do 10.5 api calls to currency.com',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -181,7 +182,8 @@ export class MockServerService {
         statusId: 1,
         type: 'bug',
         priority: low_pr,
-        description: 'fix select on sign up form',
+        title: 'fix select on sign up form',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
       {
         id: 3015,
@@ -189,7 +191,8 @@ export class MockServerService {
         statusId: 1,
         type: 'bug',
         priority: medium_pr,
-        description: 'fix 2 buttons on sign up form',
+        title: 'fix 2 buttons on sign up form',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
       {
         id: 3006,
@@ -197,7 +200,8 @@ export class MockServerService {
         statusId: 1,
         type: 'bug',
         priority: medium_pr,
-        description: 'fix logout',
+        title: 'fix logout',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -206,7 +210,8 @@ export class MockServerService {
         statusId: 2,
         type: 'bug',
         priority: medium_pr,
-        description: 'fix button on sign up form',
+        title: 'fix button on sign up form',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -215,7 +220,8 @@ export class MockServerService {
         statusId: 2,
         type: 'bug',
         priority: low_pr,
-        description: 'fix everything on sign up form',
+        title: 'fix everything on sign up form',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -224,7 +230,8 @@ export class MockServerService {
         statusId: 3,
         type: 'bug',
         priority: high_pr,
-        description: 'fix styles',
+        title: 'fix styles',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -233,7 +240,8 @@ export class MockServerService {
         statusId: 4,
         type: 'bug',
         priority: high_pr,
-        description: 'fix all buttons',
+        title: 'fix all buttons',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
 
       {
@@ -242,7 +250,8 @@ export class MockServerService {
         statusId: 5,
         type: 'bug',
         priority: low_pr,
-        description: 'fix button on sign up form',
+        title: 'fix button on sign up form',
+        description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
     ];
 

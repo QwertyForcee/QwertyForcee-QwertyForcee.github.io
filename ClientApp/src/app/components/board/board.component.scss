@@ -131,3 +131,7 @@
 .dragging {
   opacity: 0.5;
 }
+
+.blured {
+  filter: blur(4px);
+}

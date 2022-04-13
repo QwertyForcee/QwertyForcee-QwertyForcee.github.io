@@ -9,7 +9,7 @@
               d="M9.73344 2.2538L11.398 7.22093L11.5123 7.56205H11.8721H17.2518L12.9008 10.7141L12.6059 10.9277L12.7187 11.2739L14.3814 16.3765L10.0264 13.2215L9.73306 13.009L9.43972 13.2215L5.08469 16.3765L6.74739 11.2739L6.86021 10.9277L6.56533 10.7141L2.21432 7.56205H7.59401H7.95372L8.06807 7.22099L9.73344 2.2538Z"
               fill="#FFF852" stroke="#7E8044" />
           </svg>
-          {{ticket.title}}
+          {{ticket?.title}}
         </p>
         <p>
           <a (click)="close()">
@@ -45,16 +45,14 @@ app throws null reference exception.
           <div class="one-line-controls">
             <p>
               <select name="" id="">
-                <option *ngFor="let u of users" value="{{u.id}}" selected="u.id === ticket.assignedTo.id">{{u.name}}</option>
+                <option *ngFor="let u of users" value="{{u.id}}" [selected]="u.id === ticket?.assignedTo?.id">{{u.name}}</option>
               </select>
             </p>
 
             <p>
               <label for="">priority:</label>
               <select name="" id="">
-                <option value="">1. high priority</option>
-                <option value="">2. medium priority</option>
-                <option value="">3. low priority</option>
+                <option *ngFor="let pr of priorities" [selected]="pr.id === ticket?.priority?.id" value="{{pr.id}}">{{pr.name}}</option>
               </select>
             </p>
           </div>
@@ -77,7 +75,7 @@ app throws null reference exception.
           </h5>
           <p>this is a comment</p>
         </div>
-        <form class="commentForm">
+        <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="submit()">
           <textarea name="messageInput" formControlName="message" cols="50" rows="3"></textarea>
           <button type="submit">Leave a comment</button>
         </form>

@@ -10,7 +10,7 @@ import { Ticket } from 'src/app/models/ticket';
 export class TicketComponent implements OnInit {
 
   @Input() ticket:Ticket | null= null;
-  @Output() openingTicket = new EventEmitter<void>();
+  @Output() openingTicket = new EventEmitter<number>();
 
   showContextMenu = false;
 
@@ -21,7 +21,7 @@ export class TicketComponent implements OnInit {
   }
 
   openTicket(){
-    this.openingTicket.emit();
+    this.openingTicket.emit(this.ticket?.id);
   }
 
   @HostListener('dragstart', ['$event'])

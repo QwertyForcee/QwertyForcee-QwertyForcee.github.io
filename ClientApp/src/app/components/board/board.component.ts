@@ -30,6 +30,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
 
   creatingNewTicket = false;
   viewTicket = false;
+  viewTicketId = 0;
 
   constructor(private mockService: MockServerService, private element: ElementRef) {
     this.mockService.tickets$.subscribe(
@@ -73,8 +74,13 @@ export class BoardComponent implements OnInit, AfterViewChecked {
     this.creatingNewTicket = true;
   }
 
-  openTicket() {
+  openTicket(id: number | string) {
     this.viewTicket = true;
+    this.viewTicketId = +id;
+  }
+
+  getTicketToView(): Ticket | null{
+    return this.tickets.find((t)=> t.id === this.viewTicketId) ?? null;
   }
 
   closeTicketView() {

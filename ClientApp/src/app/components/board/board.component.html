@@ -1,12 +1,12 @@
-<div class="board-screen">
+<app-new-ticket *ngIf="creatingNewTicket" (closeEmitter)="closeNewTicketView()"></app-new-ticket>
+<app-view-ticket *ngIf="viewTicket"
+  [ticket]="getTicketToView()"
+  (closeEmitter)="closeTicketView()"
+ ></app-view-ticket>
+
+<div class="board-screen" [class.blured]="creatingNewTicket || viewTicket">
   <section class="filters-section">
     <button (click)="createNewTicket()" class="new-item-but">New Item</button>
-    <app-new-ticket *ngIf="creatingNewTicket" (closeEmitter)="closeNewTicketView()"></app-new-ticket>
-    <app-view-ticket *ngIf="viewTicket"
-      [ticket]="tickets[0]"
-      (closeEmitter)="closeTicketView()"
-     ></app-view-ticket>
-
     <ul>
       <li>
         <select name="" id="" (change)="filterChange($event, 'type')">
@@ -74,7 +74,7 @@
     </div>
     <div class="board-body">
       <div class="board-column" *ngFor="let status of statuses" draggable="false">
-          <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket()"></app-ticket>
+          <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket($event)"></app-ticket>
       </div>
 
     </div>
