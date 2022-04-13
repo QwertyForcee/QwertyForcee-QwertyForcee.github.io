@@ -2,7 +2,10 @@
   <section class="filters-section">
     <button (click)="createNewTicket()" class="new-item-but">New Item</button>
     <app-new-ticket *ngIf="creatingNewTicket" (closeEmitter)="closeNewTicketView()"></app-new-ticket>
-    <app-view-ticket *ngIf="viewTicket" (closeEmitter)="closeTicketView()"></app-view-ticket>
+    <app-view-ticket *ngIf="viewTicket"
+      [ticket]="tickets[0]"
+      (closeEmitter)="closeTicketView()"
+     ></app-view-ticket>
 
     <ul>
       <li>

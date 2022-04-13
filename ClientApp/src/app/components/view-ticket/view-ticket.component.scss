@@ -82,6 +82,7 @@
 }
 
 .comment-section {
+  margin-top: 5%;
   width: 100%;
   padding-bottom: 50px;
   background-color: #ffffff;
@@ -95,6 +96,21 @@
 
 .comment-container h5, p {
   margin: 3px;
+}
+
+.commentForm {
+  margin-top: 10%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.commentForm button {
+  background-color: #bbbbbb;
+  margin: 0;
+  margin-left: 15px;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 @media (max-width: 800px) {
