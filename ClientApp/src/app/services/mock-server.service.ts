@@ -34,6 +34,10 @@ export class MockServerService {
   ticketsChangedSub: Subject<void>= new Subject<void>();
   ticketsChanged$:Observable<void> = this.ticketsChangedSub.asObservable();
 
+  getCurrentUser(): User{
+    return this.users[0];
+  }
+
   getAllProjects(): Project[] {
     return this.projects;
   }
@@ -62,7 +66,7 @@ export class MockServerService {
       this.tickets.push(ticket);
     }
     this.ticketsSub.next(this.tickets);
-    //this.ticketsChangedSub.next();    
+    //this.ticketsChangedSub.next();
   }
 
   private setUsers() {

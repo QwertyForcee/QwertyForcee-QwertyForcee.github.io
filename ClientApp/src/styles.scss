@@ -37,3 +37,12 @@ footer{
 textarea {
   resize: none;
 }
+
+
+.blured {
+  filter: blur(4px);
+}
+
+.dragging {
+  opacity: 0.5;
+}

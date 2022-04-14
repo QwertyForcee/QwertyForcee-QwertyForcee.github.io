@@ -1,3 +1,4 @@
+import { Comment } from "./comment";
 import { Priority } from "./priority";
 import { Project } from "./project";
 import { Status } from "./status";

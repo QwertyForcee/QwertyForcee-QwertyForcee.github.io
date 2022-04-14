@@ -1,4 +1,4 @@
-:host{
+:host {
   height: 100%;
   width: 100%;
   display: flex;
@@ -13,7 +13,7 @@
   flex-direction: row;
 }
 
-.new-item-but{
+.new-item-but {
   font-size: 125%;
   padding: 10px;
   width: 75%;
@@ -59,7 +59,7 @@
   text-align: right;
 }
 
-.board-section {
+.board {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -67,71 +67,66 @@
   flex: 1;
   overflow: auto;
   min-height: 0;
-}
 
-.board-head {
-  background: #FFFFFF;
-  border: 1.5px solid #C0BBC7;
-  font-size: 125%;
-  display: flex;
-  border-radius: 5px;
-  min-width: min-content;
-  width: 100%;
 
-}
+  &-head {
+    background: #FFFFFF;
+    border: 1.5px solid #C0BBC7;
+    font-size: 125%;
+    display: flex;
+    border-radius: 5px;
+    min-width: min-content;
+    width: 100%;
+  }
 
-.board-header {
-  //margin-left: 20px;
-  //margin-right: 20px;
-  width: 250px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-}
 
-.board-column {
-  width: 240px;
-  margin-left: 5px;
-  margin-right: 5px;
+  &-header {
+    //margin-left: 20px;
+    //margin-right: 20px;
+    width: 250px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+  }
 
-  height: 100%;
-  background: #EDEDED;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  &-column {
+    width: 240px;
+    margin-left: 5px;
+    margin-right: 5px;
 
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-.board-column app-ticket {
-  margin: 4px 5px 4px 5px
-}
+    height: 100%;
+    background: #EDEDED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-.board-body {
-  display: flex;
-  height: 100%;
-}
-
-@media (max-width: 800px) {
-  .board-screen {
+    display: flex;
     flex-direction: column;
+    flex-shrink: 0;
   }
 
-  .board-header {
-    width: 200px;
+  &-column app-ticket {
+    margin: 4px 5px 4px 5px
   }
 
-  .board-column {
-    width: 200px;
+  &-body {
+    display: flex;
+    height: 100%;
   }
+
+  @media (max-width: 800px) {
+    &-screen {
+      flex-direction: column;
+    }
+
+    &-header {
+      width: 200px;
+    }
+
+    &-column {
+      width: 200px;
+    }
+  }
+
 }
 
-
-.dragging {
-  opacity: 0.5;
-}
-
-.blured {
-  filter: blur(4px);
-}

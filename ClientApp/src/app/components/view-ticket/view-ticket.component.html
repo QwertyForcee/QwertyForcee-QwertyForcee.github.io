@@ -61,19 +61,12 @@ app throws null reference exception.
         <button type="submit">SAVE</button>
       </form>
       <section class="comment-section">
-        <div class="comment-container">
+        <div class="comment-container" *ngFor="let c of ticket?.comments">
           <h5>
             <img width="30px" src="../../../assets/temp_ava.jpg" alt="">
-            Maxim
+            {{c.user?.name}}
           </h5>
-          <p>this is a comment</p>
-        </div>
-        <div class="comment-container">
-          <h5>
-            <img width="30px" src="../../../assets/temp_ava.jpg" alt="">
-            Maxim
-          </h5>
-          <p>this is a comment</p>
+          <p>{{c.text}}</p>
         </div>
         <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="submit()">
           <textarea name="messageInput" formControlName="message" cols="50" rows="3"></textarea>

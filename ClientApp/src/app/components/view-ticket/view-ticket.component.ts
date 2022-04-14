@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Comment } from 'src/app/models/comment';
 import { Priority } from 'src/app/models/priority';
 import { Ticket } from 'src/app/models/ticket';
 import { User } from 'src/app/models/user';
@@ -35,8 +36,12 @@ export class ViewTicketComponent extends BaseModalWindowComponent {
 
   submit() {
     if (this.commentForm.valid) {
-      console.log(this.commentForm);
+      const comment = {user: this.mockService.getCurrentUser(), text: this.commentForm.value.message} as Comment;
+      if (this.ticket && !this.ticket?.comments){
+        this.ticket.comments = [];
+      }
 
+      this.ticket?.comments.push(comment);
     }
   }
 }
