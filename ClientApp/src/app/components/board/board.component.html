@@ -66,14 +66,14 @@
 
     </ul>
   </section>
-  <section class="board" let>
+  <section class="board">
     <div class="board-head">
       <p class="board-header" *ngFor="let status of statuses">
         {{status.name}}
       </p>
     </div>
     <div class="board-body">
-      <div class="board-column" *ngFor="let status of statuses" draggable="false">
+      <div class="board-column" [attr.data-columnId]="status.id" *ngFor="let status of statuses" draggable="false">
           <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket($event)"></app-ticket>
       </div>
 

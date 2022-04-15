@@ -39,8 +39,8 @@ export class BoardComponent implements OnInit, AfterViewChecked {
           this.tickets = e;
         }
       }
-    ); 
-    this.mockService.getTickets(); 
+    );
+    this.mockService.getTickets();
   }
 
   ngAfterViewChecked(): void {
@@ -49,6 +49,8 @@ export class BoardComponent implements OnInit, AfterViewChecked {
       const headers = this.element.nativeElement.querySelectorAll('div.board-column');
       headers.forEach((header: any) => {
         header.addEventListener('dragover', (e: any) => {
+          console.log(header.getAttribute('data-columnId'));
+
           const draggable = document.querySelector('.dragging')!;
           if (draggable) {
             header.appendChild(draggable);
