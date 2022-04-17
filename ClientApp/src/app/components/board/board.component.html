@@ -74,7 +74,12 @@
     </div>
     <div class="board-body">
       <div class="board-column" [attr.data-columnId]="status.id" *ngFor="let status of statuses" draggable="false">
-          <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" [ticket]="ticket" (openingTicket)="openTicket($event)"></app-ticket>
+          <app-ticket *ngFor="let ticket of getTicketsByStatusId(status.id)" 
+            [attr.data-ticketId]="ticket.id"
+            [ticket]="ticket"
+            (openingTicket)="openTicket($event)"
+            (deletingTicket)="deleteTicket($event)">
+          </app-ticket>
       </div>
 
     </div>

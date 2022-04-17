@@ -23,23 +23,40 @@ export class NewTicketComponent extends BaseModalWindowComponent {
     this.newTicketForm = new FormGroup(
       {
         "title": new FormControl("", Validators.required),
-        "type": new FormControl(),
-        "priority": new FormControl(),
-        "assignedTo": new FormControl(0, Validators.required),
+        "type": new FormControl("", Validators.required),
+        "priority": new FormControl(0, Validators.required),
+        "assignedToId": new FormControl(0, Validators.required),
         "description": new FormControl(),
       }
     );
   }
 
+  get isValidForm() {
+    return this.newTicketForm.valid;
+  }
+
   ngOnInit(): void {
-    this.users =  this.mockService.getUsers();
+    this.users = this.mockService.getUsers();
     this.priorities = this.mockService.getPriorities();
   }
 
   submit() {
-    console.log(this.newTicketForm);
-    if (this.newTicketForm.valid){
-      this.mockService.addNewTicket(this.newTicketForm.value as Ticket);
+    if (this.newTicketForm.valid) {
+      const formValues = this.newTicketForm.value;
+      const ticket = {
+        id: this.mockService.getNextTicketId(),
+        title: formValues.title,
+        type: formValues.type,
+        priority: this.priorities.find(p => p.id === +formValues.priority),
+        description: formValues.description,
+        assignedTo: this.users.find(u => u.id === +formValues.assignedToId),
+        statusId: 1,
+
+      } as Ticket;
+
+      console.log(ticket);
+
+      this.mockService.addNewTicket(ticket);
       this.close();
     }
   }

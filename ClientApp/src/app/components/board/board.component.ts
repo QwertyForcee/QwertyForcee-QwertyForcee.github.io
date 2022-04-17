@@ -6,7 +6,7 @@ import { Status } from 'src/app/models/status';
 import { Ticket } from 'src/app/models/ticket';
 import { User } from 'src/app/models/user';
 import { MockServerService } from 'src/app/services/mock-server.service';
-import {tap, map} from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-board',
@@ -23,7 +23,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   } as BoardFilter;
 
   //tickets$: Observable<Ticket[]>;
-  tickets: Ticket[]= [];
+  tickets: Ticket[] = [];
   statuses: Status[] = [];
   priorities: Priority[] = [];
   users: User[] = [];
@@ -35,7 +35,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   constructor(private mockService: MockServerService, private element: ElementRef) {
     this.mockService.tickets$.subscribe(
       {
-        next: (e)=>{
+        next: (e) => {
           this.tickets = e;
         }
       }
@@ -48,15 +48,17 @@ export class BoardComponent implements OnInit, AfterViewChecked {
       this.headersEventsInited = true;
       const headers = this.element.nativeElement.querySelectorAll('div.board-column');
       headers.forEach((header: any) => {
-        header.addEventListener('dragover', (e: any) => {
-          console.log(header.getAttribute('data-columnId'));
 
-          const draggable = document.querySelector('.dragging')!;
-          if (draggable) {
-            header.appendChild(draggable);
-          }
-        })
-      })
+        header.addEventListener('dragover', ()=>{
+          header.classList.add('chosen-board-header');
+        });
+
+        header.addEventListener('dragleave', ()=>{
+          setTimeout(()=>{
+            header.classList.remove('chosen-board-header');
+          }, 0);
+        });
+      });
     }
   }
 
@@ -68,7 +70,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
 
   }
 
-  getTicketsByStatusId(statusId: number):Ticket[] {
+  getTicketsByStatusId(statusId: number): Ticket[] {
     return this.tickets.filter(t => t.statusId === statusId && this.applyFilters(t));
   }
 
@@ -81,8 +83,12 @@ export class BoardComponent implements OnInit, AfterViewChecked {
     this.viewTicketId = +id;
   }
 
-  getTicketToView(): Ticket | null{
-    return this.tickets.find((t)=> t.id === this.viewTicketId) ?? null;
+  deleteTicket(id: number | string) {
+    this.mockService.deleteTicket(id);
+  }
+
+  getTicketToView(): Ticket | null {
+    return this.tickets.find((t) => t.id === this.viewTicketId) ?? null;
   }
 
   closeTicketView() {
@@ -103,7 +109,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
   }
 
   filterChange(e: any, filterName?: string) {
-    if (e && filterName && Object.keys(this.filters).includes(filterName)){
+    if (e && filterName && Object.keys(this.filters).includes(filterName)) {
       const v = [e.target.value];
       this.filters[filterName as (keyof BoardFilter)] = v;
     }

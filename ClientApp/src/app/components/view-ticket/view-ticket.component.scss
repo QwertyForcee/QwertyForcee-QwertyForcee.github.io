@@ -93,6 +93,16 @@
 
 }
 
+.comment-container h5 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.comment-container img {
+  margin-right: 5px;
+}
+
 .comment-container h5, p {
   font-weight: 500;
   margin: 3px;
@@ -112,6 +122,10 @@
   padding-left: 2%;
   padding-right: 2%;
 }
+
+.valid-but {
+  background: #D79EE5 !important;
+} 
 
 @media (max-width: 800px) {
   .modal-content {

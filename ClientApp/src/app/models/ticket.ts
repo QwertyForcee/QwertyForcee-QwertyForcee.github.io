@@ -6,14 +6,13 @@ import { User } from "./user";
 
 export interface Ticket {
   id: number;
+  title: string;
+  description: string;
   type: string;
   assignedTo: User;
   priority: Priority;
   statusId: number;
-  status: Status;
-  title: string;
-  description: string;
-  project: Project;
-  comments: Comment[];
-
+  status?: Status;
+  project?: Project;
+  comments?: Comment[];
 }

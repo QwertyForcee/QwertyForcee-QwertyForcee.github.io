@@ -25,7 +25,11 @@
 </div>
 
 <div class="context-menu" *ngIf="showContextMenu">
-  <button>
+  <button (click)="gitHubRequest()">
+    <img src="../../../assets/github.png" width="15px" alt="">
+    GitHub request
+  </button>
+  <button (click)="deleteTicket()">
     <img src="../../../assets/delete2.png" width="15px" alt="">
     Delete
   </button>

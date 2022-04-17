@@ -20,6 +20,10 @@ export class ViewTicketComponent extends BaseModalWindowComponent {
   priorities: Priority[] = [];
   commentForm: FormGroup;
 
+  get isValidForm(){
+    return this.commentForm.valid;
+  }
+  
   constructor(private mockService: MockServerService) {
     super();
     this.commentForm = new FormGroup(
@@ -41,7 +45,10 @@ export class ViewTicketComponent extends BaseModalWindowComponent {
         this.ticket.comments = [];
       }
 
-      this.ticket?.comments.push(comment);
+      this.ticket?.comments?.push(comment);
+      this.commentForm.patchValue({
+        message: '',
+      })
     }
   }
 }

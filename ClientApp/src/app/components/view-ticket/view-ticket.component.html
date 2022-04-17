@@ -70,7 +70,7 @@ app throws null reference exception.
         </div>
         <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="submit()">
           <textarea name="messageInput" formControlName="message" cols="50" rows="3"></textarea>
-          <button type="submit">Leave a comment</button>
+          <button [class.valid-but]="isValidForm" type="submit">Leave a comment</button>
         </form>
       </section>
     </section>

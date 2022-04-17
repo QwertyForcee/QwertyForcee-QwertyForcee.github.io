@@ -47,7 +47,7 @@
           </div>
           <p>
             <label for="assignedTo">Assigned to:</label>
-            <select formControlName="assignedTo" name="assignedTo" id="">
+            <select formControlName="assignedToId" name="assignedTo" id="">
               <option *ngFor="let u of users" value="{{u.id}}">{{u.name}}</option>
             </select>
           </p>
@@ -58,7 +58,7 @@
           </p>
         </div>
         <p>
-          <button type="submit">CREATE</button>
+          <button [class.valid-but]="isValidForm" type="submit">CREATE</button>
         </p>
       </form>
     </section>

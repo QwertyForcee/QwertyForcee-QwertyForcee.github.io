@@ -31,10 +31,10 @@ export class MockServerService {
   ticketsSub: Subject<Ticket[]> = new Subject<Ticket[]>();
   tickets$: Observable<Ticket[]> = this.ticketsSub.asObservable();
 
-  ticketsChangedSub: Subject<void>= new Subject<void>();
-  ticketsChanged$:Observable<void> = this.ticketsChangedSub.asObservable();
+  ticketsChangedSub: Subject<void> = new Subject<void>();
+  ticketsChanged$: Observable<void> = this.ticketsChangedSub.asObservable();
 
-  getCurrentUser(): User{
+  getCurrentUser(): User {
     return this.users[0];
   }
 
@@ -45,7 +45,7 @@ export class MockServerService {
     return this.projects.filter(proj => proj.members.some(membr => membr.id === userId));
   }
 
-  getTickets(): void{
+  getTickets(): void {
     this.ticketsSub.next(this.tickets);
   }
 
@@ -57,16 +57,26 @@ export class MockServerService {
     return this.priorities;
   }
 
-  getUsers(){
+  getUsers() {
     return this.users;
   }
 
-  addNewTicket(ticket:Ticket){
-    if (ticket){
+  addNewTicket(ticket: Ticket) {
+    if (ticket) {
       this.tickets.push(ticket);
     }
     this.ticketsSub.next(this.tickets);
     //this.ticketsChangedSub.next();
+  }
+
+  deleteTicket(ticketId: number | string) {
+    this.tickets = this.tickets.filter(t => t.id !== +ticketId);
+
+    this.ticketsSub.next(this.tickets); 
+  }
+
+  getNextTicketId() {
+    return Math.max(...this.tickets.map(t => t.id)) + 1;
   }
 
   private setUsers() {
@@ -160,7 +170,7 @@ export class MockServerService {
       },
 
       {
-        id: 7,
+        id: 8,
         name: 'Done2',
       },
     ]

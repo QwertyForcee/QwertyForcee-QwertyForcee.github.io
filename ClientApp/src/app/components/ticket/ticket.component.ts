@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Host, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Ticket } from 'src/app/models/ticket';
+import { getCommits } from '../../../../modules/github-api-caller'
 
 @Component({
   selector: 'app-ticket',
@@ -11,6 +12,7 @@ export class TicketComponent implements OnInit {
 
   @Input() ticket:Ticket | null= null;
   @Output() openingTicket = new EventEmitter<number>();
+  @Output() deletingTicket = new EventEmitter<number>();
 
   showContextMenu = false;
 
@@ -24,6 +26,14 @@ export class TicketComponent implements OnInit {
     this.openingTicket.emit(this.ticket?.id);
   }
 
+  deleteTicket(){
+    this.deletingTicket.emit(this.ticket?.id);
+  }
+
+  gitHubRequest(){
+    console.log(getCommits());
+  }
+
   @HostListener('dragstart', ['$event'])
   dragStart(event: any){
     this.element.nativeElement.classList.add('dragging');
@@ -32,6 +42,12 @@ export class TicketComponent implements OnInit {
   @HostListener('dragend', ['$event'])
   dragEnd(event: any){
     this.element.nativeElement.classList.remove('dragging');
+    
+    const header = document.querySelector('.chosen-board-header');
+    const columnId = header?.getAttribute('data-columnId');
+    if (this.ticket && columnId){
+      this.ticket.statusId = +columnId;
+    }
   }
 
   @HostListener('click', ['$event'])
