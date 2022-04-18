@@ -31,7 +31,7 @@ export class TicketComponent implements OnInit {
   }
 
   gitHubRequest(){
-    console.log(getCommits());
+    getCommits();
   }
 
   @HostListener('dragstart', ['$event'])
@@ -42,7 +42,7 @@ export class TicketComponent implements OnInit {
   @HostListener('dragend', ['$event'])
   dragEnd(event: any){
     this.element.nativeElement.classList.remove('dragging');
-    
+
     const header = document.querySelector('.chosen-board-header');
     const columnId = header?.getAttribute('data-columnId');
     if (this.ticket && columnId){
