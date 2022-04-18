@@ -50,3 +50,13 @@ textarea {
 .chosen-board-header {
   background: #F5E9FF !important;
 }
+
+.vertical-line {
+  height: 100%;
+  width: 5px;
+  background: #FFF852;
+  border-radius: 4px;
+  border: 1px solid #7E7E7E;
+  position: absolute;
+  z-index: 10;
+}

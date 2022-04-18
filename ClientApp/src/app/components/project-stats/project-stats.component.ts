@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GitHubAPI } from 'modules/GitHubIntegrationModule/github.api';
 import { ChartDataModel } from 'src/app/models/chart-data-model';
+import { AuthorScore } from './commit-chart-model';
 
 @Component({
   selector: 'app-project-stats',
@@ -9,23 +11,56 @@ import { ChartDataModel } from 'src/app/models/chart-data-model';
 export class ProjectStatsComponent implements OnInit {
 
   mockData1: ChartDataModel[] = [
-    { color: '#b851e0', percent: 30 , label: 'Maxim (15)'},
-    { color: '#239fa8', percent: 30 , label: 'Joe (15)'},
-    { color: '#0a632b', percent: 15 , label: 'Nadya (8)'},
-    { color: '#e7ff96', percent: 20 , label: 'Kirill(10)'},
-    { color: '#00ff96', percent: 5 , label: 'Kirill2(1)'},
+    { color: '#b851e0', percent: 30, label: 'Maxim (15)' },
+    { color: '#239fa8', percent: 30, label: 'Joe (15)' },
+    { color: '#0a632b', percent: 15, label: 'Nadya (8)' },
+    { color: '#e7ff96', percent: 20, label: 'Kirill(10)' },
+    { color: '#00ff96', percent: 5, label: 'Kirill2(1)' },
   ]
 
   mockData2: ChartDataModel[] = [
-    { color: '#993f3f', percent: 60 , label: 'BUG'},
-    { color: '#3f9699', percent: 40 , label: 'FEATURE'},
+    { color: '#993f3f', percent: 60, label: 'BUG' },
+    { color: '#3f9699', percent: 40, label: 'FEATURE' },
   ]
 
+  contibutorsData: any = [];
 
   constructor() { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const username = localStorage.getItem('github_username');
+    const repository = localStorage.getItem('github_repository')
+    if (username && repository) {
+      const commits = await GitHubAPI.getCommits(username, repository);
 
+      if (Array.isArray(commits)) {
+        const authorsScores: AuthorScore[] = [];
+
+        commits.forEach(c => {
+          const [authorId, authorName] = [c.author.id, c.author.login]
+          if (authorsScores[authorId]) {
+            authorsScores[authorId].score += 1;
+          } else {
+            authorsScores[authorId] = {
+              score: 1,
+              authorId,
+              authorName,
+            } as AuthorScore;
+          }
+        });
+        console.log(authorsScores);
+        this.contibutorsData = authorsScores.map(aScore => {
+          return {
+            color: `#${Math.random()}${Math.random()}${Math.random()}`,
+            label: aScore.authorName,
+            percent: 100,
+          }
+        });
+      }
+
+      //color: `#${Math.random()}${Math.random()}${Math.random()}`,
+
+    }
   }
 
 }

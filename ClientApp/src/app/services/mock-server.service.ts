@@ -19,6 +19,8 @@ export class MockServerService {
     this.setStatuses();
     this.setTickets();
 
+    localStorage.setItem('github_username', 'QwertyForcee');
+    localStorage.setItem('github_repository', 'QwertyForcee.github.io')
   }
 
   projects: Project[] = [];

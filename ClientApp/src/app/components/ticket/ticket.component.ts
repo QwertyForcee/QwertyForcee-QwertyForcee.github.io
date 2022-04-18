@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Host, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Ticket } from 'src/app/models/ticket';
-import { getCommits } from '../../../../modules/github-api-caller'
+import { GitHubAPI } from '../../../../modules/GitHubIntegrationModule/github.api'
 
 @Component({
   selector: 'app-ticket',
@@ -31,7 +31,11 @@ export class TicketComponent implements OnInit {
   }
 
   gitHubRequest(){
-    getCommits();
+    const username = localStorage.getItem('github_username');
+    const repository = localStorage.getItem('github_repository')
+    if (username && repository){
+      GitHubAPI.getCommits(username, repository);
+    }
   }
 
   @HostListener('dragstart', ['$event'])
