@@ -38,22 +38,25 @@ export class ProjectStatsComponent implements OnInit {
 
         commits.forEach(c => {
           const [authorId, authorName] = [c.author.id, c.author.login]
-          if (authorsScores[authorId]) {
-            authorsScores[authorId].score += 1;
+
+          const aScore = authorsScores.find(sc => sc.authorId === authorId);
+          if (aScore) {
+            aScore.score += 1;
           } else {
-            authorsScores[authorId] = {
+            authorsScores.push({
               score: 1,
               authorId,
               authorName,
-            } as AuthorScore;
+            } as AuthorScore);
           }
         });
-        console.log(authorsScores);
-        this.contibutorsData = authorsScores.map(aScore => {
+
+        const commitsCount = authorsScores.map((sc: AuthorScore) => sc.score).reduce((val: number, sc: number) => val += sc, 0);
+        this.contibutorsData = authorsScores.map((aScore: AuthorScore) => {
           return {
-            color: `#${Math.random()}${Math.random()}${Math.random()}`,
+            color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
             label: aScore.authorName,
-            percent: 100,
+            percent: Math.floor(aScore.score / commitsCount * 100),
           }
         });
       }

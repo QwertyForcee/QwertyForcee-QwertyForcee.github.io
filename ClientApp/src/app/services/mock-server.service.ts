@@ -19,8 +19,8 @@ export class MockServerService {
     this.setStatuses();
     this.setTickets();
 
-    localStorage.setItem('github_username', 'QwertyForcee');
-    localStorage.setItem('github_repository', 'QwertyForcee.github.io')
+    localStorage.setItem('github_username', 'moment');
+    localStorage.setItem('github_repository', 'moment-timezone')
   }
 
   projects: Project[] = [];
@@ -74,7 +74,7 @@ export class MockServerService {
   deleteTicket(ticketId: number | string) {
     this.tickets = this.tickets.filter(t => t.id !== +ticketId);
 
-    this.ticketsSub.next(this.tickets); 
+    this.ticketsSub.next(this.tickets);
   }
 
   getNextTicketId() {

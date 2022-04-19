@@ -1,5 +1,5 @@
 export interface ChartDataModel {
-    color: string;
-    percent: number;
-    label?: string;
+  color: string;
+  percent: number;
+  label?: string;
 }
