@@ -30,14 +30,6 @@ export class TicketComponent implements OnInit {
     this.deletingTicket.emit(this.ticket?.id);
   }
 
-  gitHubRequest(){
-    const username = localStorage.getItem('github_username');
-    const repository = localStorage.getItem('github_repository')
-    if (username && repository){
-      GitHubAPI.getCommits(username, repository);
-    }
-  }
-
   @HostListener('dragstart', ['$event'])
   dragStart(event: any){
     this.element.nativeElement.classList.add('dragging');

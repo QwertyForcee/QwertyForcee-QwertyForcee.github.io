@@ -24,7 +24,8 @@ export class ProjectStatsComponent implements OnInit {
   ]
 
   contibutorsData: any = [];
-
+  loadCharts = false;
+  
   constructor() { }
 
   async ngOnInit(): Promise<void> {
@@ -55,10 +56,12 @@ export class ProjectStatsComponent implements OnInit {
         this.contibutorsData = authorsScores.map((aScore: AuthorScore) => {
           return {
             color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-            label: aScore.authorName,
-            percent: Math.floor(aScore.score / commitsCount * 100),
+            label: `${aScore.authorName} (${aScore.score})`,
+            percent: (aScore.score / commitsCount * 100).toFixed(2),
           }
         });
+        
+        this.loadCharts = true;
       }
 
       //color: `#${Math.random()}${Math.random()}${Math.random()}`,

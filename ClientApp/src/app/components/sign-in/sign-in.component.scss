@@ -88,6 +88,19 @@
   width: 100%;
 }
 
+.ng-invalid label{
+  color: #af0000 !important;
+}
+
+.ng-invalid input {
+  border: 1px solid rgb(182, 0, 0);
+}
+
+.invalid-form {
+  color: #722b2b !important;
+  border: 1px solid rgb(80, 8, 8);
+}
+
 @media (max-width: 800px) {
   .email-control, .password-control {
     display: flex;
