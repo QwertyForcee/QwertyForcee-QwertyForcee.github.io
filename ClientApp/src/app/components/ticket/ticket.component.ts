@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Host, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Ticket } from 'src/app/models/ticket';
-import { GitHubAPI } from '../../../../modules/GitHubIntegrationModule/github.api'
+
 
 @Component({
   selector: 'app-ticket',

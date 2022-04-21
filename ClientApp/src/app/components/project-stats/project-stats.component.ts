@@ -1,7 +1,10 @@
+declare const getCommits:any; 
+ 
 import { Component, OnInit } from '@angular/core';
-import { GitHubAPI } from 'modules/GitHubIntegrationModule/github.api';
 import { ChartDataModel } from 'src/app/models/chart-data-model';
 import { AuthorScore } from './commit-chart-model';
+import { getCommits as getCommits } from '../../../assets/modules/GitHubIntegrationModule/github.api.js';
+//declare const getCommits:any;
 
 @Component({
   selector: 'app-project-stats',
@@ -32,7 +35,7 @@ export class ProjectStatsComponent implements OnInit {
     const username = localStorage.getItem('github_username');
     const repository = localStorage.getItem('github_repository')
     if (username && repository) {
-      const commits = await GitHubAPI.getCommits(username, repository);
+      const commits = await getCommits(username, repository);
 
       if (Array.isArray(commits)) {
         const authorsScores: AuthorScore[] = [];
