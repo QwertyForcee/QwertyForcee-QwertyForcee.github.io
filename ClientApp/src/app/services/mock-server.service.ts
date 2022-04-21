@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { Comment } from '../models/comment';
 import { Priority } from '../models/priority';
 import { Project } from '../models/project';
+import { SignInModel } from '../models/sign-in-model';
 import { Status } from '../models/status';
 import { Ticket } from '../models/ticket';
 import { User } from '../models/user';
@@ -23,6 +24,7 @@ export class MockServerService {
     localStorage.setItem('github_repository', 'moment-timezone')
   }
 
+  currentUser: User | null = null;
   projects: Project[] = [];
   users: User[] = [];
   tickets: Ticket[] = [];
@@ -36,8 +38,19 @@ export class MockServerService {
   ticketsChangedSub: Subject<void> = new Subject<void>();
   ticketsChanged$: Observable<void> = this.ticketsChangedSub.asObservable();
 
-  getCurrentUser(): User {
-    return this.users[0];
+  signIn(model: SignInModel): boolean {
+    if (model) {
+      const user = this.users.find(u => u.email === model.email && u.password === model.password);
+      if (user) {
+        this.currentUser = user;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUser;
   }
 
   getAllProjects(): Project[] {
@@ -92,6 +105,12 @@ export class MockServerService {
         id: 2,
         name: 'Joe',
         email: 'joe@joe.com'
+      } as User,
+      {
+        id: 3,
+        name: 'User',
+        email: 'user@gmail.com',
+        password: 'user'
       } as User,
     ]
   }
