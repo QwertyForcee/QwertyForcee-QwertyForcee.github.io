@@ -2,6 +2,7 @@
     <app-chart
         [useInfoPanel]="true"
         [data]="contibutorsData"
+        [limit]="10"
         title="Ticket creators"
     ></app-chart>
     <app-chart
@@ -18,7 +19,7 @@
 
     <p>
         <img src="../../../assets/member.png" width="40px" alt="">
-        10 members
+        {{contributersCount}} members
     </p>
 
     <p>

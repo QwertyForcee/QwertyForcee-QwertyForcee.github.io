@@ -13,8 +13,20 @@ export class ChartComponent implements OnInit {
   @Input() useInfoPanel = true;
   @Input() title = '';
   @Input() data: ChartDataModel[] = [];
+  @Input() limit: number = 20;
 
   ngOnInit(): void {
+    this.data = this.data.sort(d => d.percent).slice(0, this.limit);
+    const dataSummary = this.data.reduce((val, d) => val + (+d.percent), 0);
+    if (dataSummary < 100){
+      const others = 100 - dataSummary;
+      this.data.push({
+        color: '#000',
+        percent: others,
+        label: 'Others'
+      } as ChartDataModel)
+    }
+
     const canvas = this.element.nativeElement.querySelector('.chart-canvas');
     const dimensions = this.getObjectFitSize(
       true,

@@ -1,10 +1,9 @@
-declare const getCommits:any; 
- 
 import { Component, OnInit } from '@angular/core';
+import { Commit } from 'modules/GitHubIntegrationModule/commit-model';
+import { Contributor } from 'modules/GitHubIntegrationModule/contributor';
+import { GitHubAPI } from 'modules/GitHubIntegrationModule/github.api';
 import { ChartDataModel } from 'src/app/models/chart-data-model';
 import { AuthorScore } from './commit-chart-model';
-import { getCommits as getCommits } from '../../../assets/modules/GitHubIntegrationModule/github.api.js';
-//declare const getCommits:any;
 
 @Component({
   selector: 'app-project-stats',
@@ -27,43 +26,31 @@ export class ProjectStatsComponent implements OnInit {
   ]
 
   contibutorsData: any = [];
+  contributersCount: number = 0;
   loadCharts = false;
-  
+
   constructor() { }
 
   async ngOnInit(): Promise<void> {
     const username = localStorage.getItem('github_username');
     const repository = localStorage.getItem('github_repository')
     if (username && repository) {
-      const commits = await getCommits(username, repository);
 
-      if (Array.isArray(commits)) {
-        const authorsScores: AuthorScore[] = [];
+      const contributers = await GitHubAPI.getContributors(username, repository);
+      console.log(contributers);
 
-        commits.forEach(c => {
-          const [authorId, authorName] = [c.author.id, c.author.login]
+      if (Array.isArray(contributers)) {
 
-          const aScore = authorsScores.find(sc => sc.authorId === authorId);
-          if (aScore) {
-            aScore.score += 1;
-          } else {
-            authorsScores.push({
-              score: 1,
-              authorId,
-              authorName,
-            } as AuthorScore);
-          }
-        });
-
-        const commitsCount = authorsScores.map((sc: AuthorScore) => sc.score).reduce((val: number, sc: number) => val += sc, 0);
-        this.contibutorsData = authorsScores.map((aScore: AuthorScore) => {
+        this.contributersCount = contributers.length ?? 0;
+        const allContributions = contributers.map((count: Contributor) => count.contributionsCount).reduce((val: number, count: number) => val += count, 0);
+        this.contibutorsData = contributers.map((c: Contributor) => {
           return {
             color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-            label: `${aScore.authorName} (${aScore.score})`,
-            percent: (aScore.score / commitsCount * 100).toFixed(2),
+            label: `${c.name} (${c.contributionsCount})`,
+            percent: (c.contributionsCount / allContributions * 100).toFixed(2),
           }
         });
-        
+
         this.loadCharts = true;
       }
 

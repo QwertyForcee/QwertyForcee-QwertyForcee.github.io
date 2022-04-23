@@ -29,7 +29,7 @@ export class SignInComponent implements OnInit {
     const formValue = this.signUpForm.value;
     if (this.signUpForm.valid){
       if (this.mockService.signIn(this.signUpForm.value)){
-        this.router.navigate(['projects'])
+        this.router.navigate(['prj/123'])
       }
 
     }
