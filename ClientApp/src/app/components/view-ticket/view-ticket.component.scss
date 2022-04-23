@@ -18,6 +18,7 @@
 
   &-header p {
     display: flex;
+    align-items: center;
     margin: 0;
   }
 
@@ -97,28 +98,31 @@
   .comment-container {
     margin: 15px 5% auto 5%;
 
-  }
+    & h5 {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
 
-  .comment-container h5 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
+    & img {
+      margin-right: 5px;
+    }
 
-  .comment-container img {
-    margin-right: 5px;
-  }
-
-  .comment-container h5,
-  p {
-    font-weight: 500;
-    margin: 3px;
+    & h5,
+    p {
+      font-weight: 500;
+      margin: 3px;
+    }
   }
 
   .commentForm {
     margin-top: 10%;
     align-items: flex-start;
     justify-content: flex-start;
+    width: 100%;
+  }
+
+  .textarea {
     width: 100%;
   }
 
@@ -135,7 +139,7 @@
   }
 
   .commits-section {
-    background: #a7a5a7;
+    background: #665266;
     display: flex;
     flex-direction: column;
 
@@ -181,7 +185,6 @@
       text-decoration: none;
       color: white;
       white-space: nowrap;
-      /* Запрещаем перенос строк */
       text-overflow: ellipsis;
       overflow: hidden;
       font-size: 80%;
@@ -201,17 +204,23 @@
   @media (max-width: 800px) {
     & {
       margin: 0;
+      margin-bottom: 5%;
     }
 
     .one-line-controls {
       flex-direction: column;
     }
 
+    .one-line-controls,
+    .commits-section-buttons,
     &-body form {
       flex-direction: column;
     }
 
-
+    .commits-section,
+    .comment-section {
+      overflow: auto;
+    }
   }
 
 }
