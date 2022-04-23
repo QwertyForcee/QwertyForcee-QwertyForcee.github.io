@@ -5,6 +5,8 @@
   margin-top: 10%;
   margin-right: 15%;
   margin-left: 15%;
+  margin-bottom: 5%;
+
   background: #FDFBFF;
 }
 
@@ -48,6 +50,8 @@
   margin-right: 5%;
   margin-left: 5%;
   width: min-content;
+  cursor: pointer;
+
 }
 
 .controls-container {
@@ -56,7 +60,9 @@
   width: 80%;
 }
 
-.controls-container input, textarea, select {
+.controls-container input,
+textarea,
+select {
   border: 2px solid #AFAFAF;
   font-size: 90%;
 }
@@ -103,7 +109,8 @@
   margin-right: 5px;
 }
 
-.comment-container h5, p {
+.comment-container h5,
+p {
   font-weight: 500;
   margin: 3px;
 }
@@ -125,7 +132,69 @@
 
 .valid-but {
   background: #D79EE5 !important;
-} 
+}
+
+.commits-section {
+  background: #7c797c;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
+
+  &-buttons {
+    display: flex;
+  }
+
+  & button {
+    white-space: nowrap;
+    width: min-content;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 5px;
+    background: unset;
+    color: #00EFD1;
+    font-size: 110%;
+  }
+  
+
+
+  & img {
+    margin-right: 5px;
+  }
+
+  & ul {
+    list-style-type: none;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & li {
+    margin: 5px 0;
+    display: block;
+  }
+
+  & a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+    /* Запрещаем перенос строк */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 80%;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+    color: #00EFD1;
+  }
+
+}
+
+.hide-button {
+  color: white !important;
+}
 
 @media (max-width: 800px) {
   .modal-content {
@@ -142,4 +211,3 @@
 
 
 }
-

@@ -13,7 +13,8 @@ export class GitHubAPI {
               authorName: commit.author.login,
               authorId: commit.author.id,
               message: commit.commit.message,
-              sha: commit.sha
+              sha: commit.sha,
+              url: commit.url
             } as Commit
           });
           return data;
@@ -48,6 +49,18 @@ export class GitHubAPI {
     return Promise.resolve([]);
   }
 
+  static searchCommitsByMessage(username: string, repository: string, message: string){
+    if (username && repository && message){
+      return fetch(`https://api.github.com/search/commits?q=${message} repo:${username}/${repository}`) //q=${message} repo:${username}/${repository}
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+    }
+
+    return Promise.resolve([]);
+  }
 }
 
 

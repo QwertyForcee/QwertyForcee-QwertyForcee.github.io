@@ -22,6 +22,10 @@ export class MockServerService {
 
     localStorage.setItem('github_username', 'moment');
     localStorage.setItem('github_repository', 'moment-timezone')
+
+    if (localStorage['debugLoggenIn'] && JSON.parse(localStorage['debugLoggenIn']) === true) {
+      this.currentUser = this.users[0];
+    }
   }
 
   currentUser: User | null = null;
@@ -84,6 +88,20 @@ export class MockServerService {
     //this.ticketsChangedSub.next();
   }
 
+  updateTicket(updatedTicket: Ticket) {
+    if (updatedTicket) {
+      const ticket = this.tickets.find(t => t.id === updatedTicket.id);
+      if (ticket) {
+        ticket.description = updatedTicket.description;
+        ticket.assignedTo = updatedTicket.assignedTo;
+        ticket.priority = updatedTicket.priority;
+      }
+      this.ticketsSub.next(this.tickets);
+      return true;
+    }
+    return false;
+  }
+
   deleteTicket(ticketId: number | string) {
     this.tickets = this.tickets.filter(t => t.id !== +ticketId);
 
@@ -117,9 +135,9 @@ export class MockServerService {
 
   private setPriorities() {
     this.priorities = [
-      { id: 1, name: 'high priority' },
-      { id: 2, name: 'medium priority' },
-      { id: 3, name: 'low priority' },
+      { id: 1, name: 'high priority', headerColor: '#fa7f7f', verticalLibeColor: '#c44341', backgroundColor: '#ffb3b3' },
+      { id: 2, name: 'medium priority', headerColor: '#94D4EF', backgroundColor: '#D0F2F6' },
+      { id: 3, name: 'low priority', headerColor: '#FFF', backgroundColor: '#FFF' },
 
     ]
   }
@@ -198,7 +216,7 @@ export class MockServerService {
   }
 
   private setTickets() {
-    const [low_pr, medium_pr, high_pr] = [...this.priorities];
+    const [high_pr, medium_pr, low_pr] = [...this.priorities];
     const [user1, user2] = [...this.users];
     this.tickets = [
       {
@@ -254,7 +272,7 @@ export class MockServerService {
         assignedTo: user2,
         statusId: 2,
         type: 'bug',
-        priority: low_pr,
+        priority: high_pr,
         title: 'fix everything on sign up form',
         description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,
@@ -264,7 +282,7 @@ export class MockServerService {
         assignedTo: user2,
         statusId: 3,
         type: 'bug',
-        priority: high_pr,
+        priority: low_pr,
         title: 'fix styles',
         description: 'create new user.\nset up required modules.\ngo to main module.\napp throws null reference exception.',
       } as Ticket,

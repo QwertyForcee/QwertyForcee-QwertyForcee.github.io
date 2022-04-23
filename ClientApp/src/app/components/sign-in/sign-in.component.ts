@@ -23,13 +23,16 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.mockService.getCurrentUser()){
+      this.router.navigate(['prj/123']);
+    }
   }
 
   submit(){
     const formValue = this.signUpForm.value;
     if (this.signUpForm.valid){
       if (this.mockService.signIn(this.signUpForm.value)){
-        this.router.navigate(['prj/123'])
+        this.router.navigate(['prj/123']);
       }
 
     }

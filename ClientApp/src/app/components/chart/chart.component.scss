@@ -1,7 +1,7 @@
-:host{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 :host h3 {
@@ -11,36 +11,35 @@
   font-size: 190%;
 }
 
-.data-section {
+.chart {
   display: flex;
 
-}
 
-.chart-canvas{
+  &-canvas {
     height: 100%;
     width: 100%;
     object-fit: contain;
-}
+  }
 
-.elements-defenition {
+  &-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
+    &-square {
+      height: 25px;
+      width: 25px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
   }
 
 
-.elements-defenition li {
+  &-info li {
     font-size: 100%;
     list-style-type: none;
     display: flex;
     white-space: nowrap;
-}
-
-.color-square {
-    height: 25px;
-    width: 25px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+  }
 
 }

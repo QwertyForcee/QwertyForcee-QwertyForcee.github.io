@@ -19,7 +19,19 @@ export class TicketComponent implements OnInit {
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
+    
+  }
 
+  get headerColor() {
+    return this.ticket?.priority?.headerColor ?? 'white';
+  }
+
+  get backGroundColor() {
+    return this.ticket?.priority?.backgroundColor ?? 'white';
+  }
+
+  get verticalLineColor() {
+    return this.ticket?.priority?.verticalLibeColor;
   }
 
   openTicket(){

@@ -29,12 +29,12 @@
       </section>
     </section>
     <section class="window-body">
-      <form action="">
+      <form [formGroup]="ticketForm" (ngSubmit)="ticketFormSubmit()">
         <div class="controls-container">
 
           <p>
             <label for="">description:</label>
-            <textarea name="" id="" cols="30" rows="10">
+            <textarea formControlName="description" name="" cols="30" rows="10">
               create new user.
 set up required modules.
 go to main module.
@@ -44,15 +44,17 @@ app throws null reference exception.
 
           <div class="one-line-controls">
             <p>
-              <select name="" id="">
-                <option *ngFor="let u of users" value="{{u.id}}" [selected]="u.id === ticket?.assignedTo?.id">{{u.name}}</option>
+              <select formControlName="assignedToId">
+                <option *ngFor="let u of users" value="{{u.id}}" [selected]="u.id === ticket?.assignedTo?.id">{{u.name}}
+                </option>
               </select>
             </p>
 
             <p>
               <label for="">priority:</label>
-              <select name="" id="">
-                <option *ngFor="let pr of priorities" [selected]="pr.id === ticket?.priority?.id" value="{{pr.id}}">{{pr.name}}</option>
+              <select formControlName="priority">
+                <option *ngFor="let pr of priorities" [selected]="pr.id === ticket?.priority?.id" value="{{pr.id}}">
+                  {{pr.name}}</option>
               </select>
             </p>
           </div>
@@ -68,10 +70,30 @@ app throws null reference exception.
           </h5>
           <p>{{c.text}}</p>
         </div>
-        <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="submit()">
+        <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="commentFormSubmit()">
           <textarea name="messageInput" formControlName="message" cols="50" rows="3"></textarea>
           <button [class.valid-but]="isValidForm" type="submit">Leave a comment</button>
         </form>
+      </section>
+      <section class="commits-section">
+        <div class="commits-section-buttons">
+          <button (click)="loadCommits()">
+            <img src="../../../assets/github-turquoise.png" width="30px" alt="">
+            search commits with id({{ticket?.id}}) in message
+          </button>
+          <button class="hide-button" *ngIf="searchCommits" (click)="toggleHideBut()">
+            <img src="../../../assets/show.png" width="15px" alt="">
+            {{hideButtonState}}
+          </button>
+        </div>
+        <ul *ngIf="displayCommits">
+          <li *ngFor="let commit of searchCommits">
+            <a href="{{commit.url}}">
+              <img src="../../../assets/link.png" width="15px" alt="">
+              {{commit.message}}
+            </a>
+          </li>
+        </ul>
       </section>
     </section>
   </div>

@@ -33,9 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/modules/GitHubIntegrationModule/github.api.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

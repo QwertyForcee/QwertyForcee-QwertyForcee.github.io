@@ -1,11 +1,11 @@
 <h3 *ngIf="title">{{title}}</h3>
-<section class="data-section">
+<section class="chart">
   <canvas class="chart-canvas">
 
   </canvas>
-  <ul class="elements-defenition" *ngIf="useInfoPanel">
+  <ul class="chart-info" *ngIf="useInfoPanel">
     <li *ngFor="let d of data">
-      <div class="color-square" [style.background]="d.color">
+      <div class="chart-info-square" [style.background]="d.color">
 
       </div>
       {{d.label}}
