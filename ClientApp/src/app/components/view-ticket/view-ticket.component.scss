@@ -8,206 +8,210 @@
   margin-bottom: 5%;
 
   background: #FDFBFF;
-}
-
-.window-header {
-  background: #D5F7EE;
-  text-decoration: underline;
-  padding: 10px;
-}
-
-.window-header p {
-  display: flex;
-  margin: 0;
-}
-
-.window-body {
-  flex-direction: column;
-  background: #FDFBFF;
-}
-
-.window-body form {
-  font-size: 150%;
-  display: flex;
-  width: 100%;
-  margin-left: 3%;
-  color: #454448;
-}
-
-.window-body button {
-  font-size: 100%;
-  background: unset;
-  border: 0;
-  height: min-content;
-  padding-left: 5%;
-  padding-right: 5%;
-  color: #454448;
-  background: #D79EE5;
-  text-decoration: underline;
-  font-weight: 400;
-  width: 20%;
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 5%;
-  width: min-content;
-  cursor: pointer;
-
-}
-
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-.controls-container input,
-textarea,
-select {
-  border: 2px solid #AFAFAF;
-  font-size: 90%;
-}
-
-.controls-container select {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.controls-container input {
-  width: 70%;
-}
-
-.controls-container textarea {
-  width: 100%;
-}
-
-.one-line-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.comment-section {
-  margin-top: 5%;
-  width: 100%;
-  padding-bottom: 50px;
-  background-color: #ffffff;
-  height: min-content;
-}
-
-.comment-container {
-  margin: 15px 5% auto 5%;
-
-}
-
-.comment-container h5 {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.comment-container img {
-  margin-right: 5px;
-}
-
-.comment-container h5,
-p {
-  font-weight: 500;
-  margin: 3px;
-}
-
-.commentForm {
-  margin-top: 10%;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.commentForm button {
-  background-color: #bbbbbb;
-  margin: 0;
-  margin-left: 15px;
-  padding-left: 2%;
-  padding-right: 2%;
-}
-
-.valid-but {
-  background: #D79EE5 !important;
-}
-
-.commits-section {
-  background: #7c797c;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 5%;
-
-  &-buttons {
-    display: flex;
-  }
-
-  & button {
-    white-space: nowrap;
-    width: min-content;
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 5px;
-    background: unset;
-    color: #00EFD1;
-    font-size: 110%;
-  }
-  
 
 
-  & img {
-    margin-right: 5px;
-  }
-
-  & ul {
-    list-style-type: none;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  & li {
-    margin: 5px 0;
-    display: block;
-  }
-
-  & a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    white-space: nowrap;
-    /* Запрещаем перенос строк */
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 80%;
-  }
-
-  & a:hover {
+  &-header {
+    background: #D5F7EE;
     text-decoration: underline;
-    color: #00EFD1;
+    padding: 10px;
   }
 
-}
-
-.hide-button {
-  color: white !important;
-}
-
-@media (max-width: 800px) {
-  .modal-content {
+  &-header p {
+    display: flex;
     margin: 0;
   }
 
+  &-body {
+    flex-direction: column;
+    background: #FDFBFF;
+  }
+
+  &-body form {
+    font-size: 150%;
+    display: flex;
+    width: 100%;
+    margin-left: 3%;
+    color: #454448;
+  }
+
+  &-body button {
+    font-size: 100%;
+    background: unset;
+    border: 0;
+    height: min-content;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #454448;
+    background: #D79EE5;
+    text-decoration: underline;
+    font-weight: 400;
+    width: 20%;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: min-content;
+    cursor: pointer;
+
+  }
+
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .controls-container input,
+  textarea,
+  select {
+    border: 2px solid #AFAFAF;
+    font-size: 90%;
+  }
+
+  .controls-container select {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .controls-container input {
+    width: 70%;
+  }
+
+  .controls-container textarea {
+    width: 100%;
+  }
+
   .one-line-controls {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
-  .window-body form {
-    flex-direction: column;
+  .comment-section {
+    margin-top: 5%;
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: #ffffff;
+    height: min-content;
   }
 
+  .comment-container {
+    margin: 15px 5% auto 5%;
+
+  }
+
+  .comment-container h5 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .comment-container img {
+    margin-right: 5px;
+  }
+
+  .comment-container h5,
+  p {
+    font-weight: 500;
+    margin: 3px;
+  }
+
+  .commentForm {
+    margin-top: 10%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .commentForm button {
+    background-color: #bbbbbb;
+    margin: 0;
+    margin-left: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .valid-but {
+    background: #D79EE5 !important;
+  }
+
+  .commits-section {
+    background: #a7a5a7;
+    display: flex;
+    flex-direction: column;
+
+    &-buttons {
+      display: flex;
+    }
+
+    & button {
+      white-space: nowrap;
+      width: min-content;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      padding: 5px;
+      background: unset;
+      color: #00EFD1;
+      font-size: 110%;
+      padding-bottom: 20px;
+    }
+
+
+
+    & img {
+      margin-right: 5px;
+    }
+
+    & ul {
+      list-style-type: none;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 5%;
+
+    }
+
+    & li {
+      margin: 5px 0;
+      display: block;
+    }
+
+    & a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      white-space: nowrap;
+      /* Запрещаем перенос строк */
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 80%;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+      color: #00EFD1;
+    }
+
+  }
+
+  .hide-button {
+    color: white !important;
+  }
+
+  @media (max-width: 800px) {
+    & {
+      margin: 0;
+    }
+
+    .one-line-controls {
+      flex-direction: column;
+    }
+
+    &-body form {
+      flex-direction: column;
+    }
+
+
+  }
 
 }
