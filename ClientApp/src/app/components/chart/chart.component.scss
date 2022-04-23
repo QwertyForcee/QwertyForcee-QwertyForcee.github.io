@@ -1,6 +1,7 @@
 :host{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 :host h3 {
@@ -12,6 +13,7 @@
 
 .data-section {
   display: flex;
+
 }
 
 .chart-canvas{
@@ -24,7 +26,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+
+  }
 
 
 .elements-defenition li {

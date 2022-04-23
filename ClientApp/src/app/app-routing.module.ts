@@ -10,6 +10,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { UserProjectsComponent } from './components/user-projects/user-projects.component';
 
 const projectOverviewRoutes: Routes = [
+  { path: '', component: BoardComponent},
   { path: 'board', component: BoardComponent},
   { path: 'stats', component: ProjectStatsComponent},
   { path: 'team', component: ProjectTeamComponent},
