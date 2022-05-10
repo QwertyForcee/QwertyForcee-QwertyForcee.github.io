@@ -1151,6 +1151,8 @@ class TicketComponent {
         this.openingTicket = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.deletingTicket = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.showContextMenu = false;
+        this.touchEnded = true;
+        this.allowedToMoveTicket = false;
     }
     ngOnInit() {
     }
@@ -1191,6 +1193,39 @@ class TicketComponent {
     mouseLeave(event) {
         this.showContextMenu = false;
     }
+    touchstart(event) {
+        this.allowedToMoveTicket = false;
+        this.touchEnded = false;
+        setTimeout(() => {
+            if (!this.touchEnded) {
+                this.element.nativeElement.classList.add('dragging');
+                const board = document.querySelector('.board');
+                if (board) {
+                    board.style.overflow = 'hidden';
+                }
+                this.allowedToMoveTicket = true;
+            }
+        }, 1000);
+    }
+    touchend(event) {
+        var _a;
+        this.touchEnded = true;
+        if (this.allowedToMoveTicket) {
+            this.element.nativeElement.classList.remove('dragging');
+            const board = document.querySelector('.board');
+            if (board) {
+                board.style.overflow = 'auto';
+            }
+            const columnId = (_a = document.elementsFromPoint(this.touchX, this.touchY).find((el) => el.className === 'board-column')) === null || _a === void 0 ? void 0 : _a.getAttribute('data-columnId');
+            if (this.ticket && columnId) {
+                this.ticket.statusId = +columnId;
+            }
+        }
+    }
+    touchmove(event) {
+        this.touchX = event.targetTouches[0].pageX;
+        this.touchY = event.targetTouches[0].pageY;
+    }
     onRightClick(event) {
         event.preventDefault();
         this.showContextMenu = true;
@@ -1203,7 +1238,7 @@ class TicketComponent {
 }
 TicketComponent.ɵfac = function TicketComponent_Factory(t) { return new (t || TicketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
 TicketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TicketComponent, selectors: [["app-ticket"]], hostBindings: function TicketComponent_HostBindings(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dragstart", function TicketComponent_dragstart_HostBindingHandler($event) { return ctx.dragStart($event); })("dragend", function TicketComponent_dragend_HostBindingHandler($event) { return ctx.dragEnd($event); })("click", function TicketComponent_click_HostBindingHandler($event) { return ctx.click($event); })("mouseleave", function TicketComponent_mouseleave_HostBindingHandler($event) { return ctx.mouseLeave($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("dragstart", function TicketComponent_dragstart_HostBindingHandler($event) { return ctx.dragStart($event); })("dragend", function TicketComponent_dragend_HostBindingHandler($event) { return ctx.dragEnd($event); })("click", function TicketComponent_click_HostBindingHandler($event) { return ctx.click($event); })("mouseleave", function TicketComponent_mouseleave_HostBindingHandler($event) { return ctx.mouseLeave($event); })("touchstart", function TicketComponent_touchstart_HostBindingHandler($event) { return ctx.touchstart($event); })("touchend", function TicketComponent_touchend_HostBindingHandler($event) { return ctx.touchend($event); })("touchmove", function TicketComponent_touchmove_HostBindingHandler($event) { return ctx.touchmove($event); });
     } }, inputs: { ticket: "ticket" }, outputs: { openingTicket: "openingTicket", deletingTicket: "deletingTicket" }, decls: 17, vars: 10, consts: [["draggable", "true", 1, "ticket", 3, "contextmenu"], [1, "vertical-line"], [1, "horizontal-content"], ["width", "19", "height", "18", "viewBox", "0 0 19 18", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["d", "M9.73344 2.2538L11.398 7.22093L11.5123 7.56205H11.8721H17.2518L12.9008 10.7141L12.6059 10.9277L12.7187 11.2739L14.3814 16.3765L10.0264 13.2215L9.73306 13.009L9.43972 13.2215L5.08469 16.3765L6.74739 11.2739L6.86021 10.9277L6.56533 10.7141L2.21432 7.56205H7.59401H7.95372L8.06807 7.22099L9.73344 2.2538Z", "fill", "#FFF852", "stroke", "#7E8044"], [3, "click"], [1, ""], ["width", "20", "height", "20", "viewBox", "0 0 20 20", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["cx", "9.73355", "cy", "10", "rx", "9.52749", "ry", "10", "fill", "#40C8F3"], ["d", "M9.161 13.752C9.07433 13.544 8.95733 13.2797 8.81 12.959C8.67133 12.6383 8.51967 12.2917 8.355 11.919C8.19033 11.5463 8.01267 11.165 7.822 10.775C7.64 10.3763 7.46667 10.0037 7.302 9.657C7.13733 9.30167 6.98133 8.98533 6.834 8.708C6.69533 8.43067 6.58267 8.21833 6.496 8.071C6.40067 9.09367 6.32267 10.203 6.262 11.399C6.20133 12.5863 6.14933 13.7867 6.106 15H4.871C4.90567 14.22 4.94467 13.4357 4.988 12.647C5.03133 11.8497 5.079 11.0697 5.131 10.307C5.19167 9.53567 5.25233 8.786 5.313 8.058C5.38233 7.33 5.456 6.641 5.534 5.991H6.639C6.873 6.37233 7.12433 6.823 7.393 7.343C7.66167 7.863 7.93033 8.409 8.199 8.981C8.46767 9.54433 8.72767 10.112 8.979 10.684C9.23033 11.2473 9.46 11.763 9.668 12.231C9.876 11.763 10.1057 11.2473 10.357 10.684C10.6083 10.112 10.8683 9.54433 11.137 8.981C11.4057 8.409 11.6743 7.863 11.943 7.343C12.2117 6.823 12.463 6.37233 12.697 5.991H13.802C14.0967 8.89433 14.3177 11.8973 14.465 15H13.23C13.1867 13.7867 13.1347 12.5863 13.074 11.399C13.0133 10.203 12.9353 9.09367 12.84 8.071C12.7533 8.21833 12.6363 8.43067 12.489 8.708C12.3503 8.98533 12.1987 9.30167 12.034 9.657C11.8693 10.0037 11.6917 10.3763 11.501 10.775C11.319 11.165 11.1457 11.5463 10.981 11.919C10.8163 12.2917 10.6603 12.6383 10.513 12.959C10.3743 13.2797 10.2617 13.544 10.175 13.752H9.161Z", "fill", "white"], ["class", "context-menu", 4, "ngIf"], [1, "context-menu"], ["src", "../../../assets/delete2.png", "width", "15px", "alt", ""]], template: function TicketComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("contextmenu", function TicketComponent_Template_div_contextmenu_0_listener($event) { return ctx.onRightClick($event); });
