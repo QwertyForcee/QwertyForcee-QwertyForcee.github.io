@@ -10,16 +10,21 @@ import { Ticket } from 'src/app/models/ticket';
 })
 export class TicketComponent implements OnInit {
 
-  @Input() ticket:Ticket | null= null;
+  @Input() ticket: Ticket | null = null;
   @Output() openingTicket = new EventEmitter<number>();
   @Output() deletingTicket = new EventEmitter<number>();
 
   showContextMenu = false;
 
+  touchX: any;
+  touchY: any;
+  touchEnded = true;
+  allowedToMoveTicket = false;
+
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
-    
+
   }
 
   get headerColor() {
@@ -34,48 +39,89 @@ export class TicketComponent implements OnInit {
     return this.ticket?.priority?.verticalLibeColor;
   }
 
-  openTicket(){
+  openTicket() {
     this.openingTicket.emit(this.ticket?.id);
   }
 
-  deleteTicket(){
+  deleteTicket() {
     this.deletingTicket.emit(this.ticket?.id);
   }
 
   @HostListener('dragstart', ['$event'])
-  dragStart(event: any){
+  dragStart(event: any) {
     this.element.nativeElement.classList.add('dragging');
   }
 
   @HostListener('dragend', ['$event'])
-  dragEnd(event: any){
+  dragEnd(event: any) {
     this.element.nativeElement.classList.remove('dragging');
 
     const header = document.querySelector('.chosen-board-header');
     const columnId = header?.getAttribute('data-columnId');
-    if (this.ticket && columnId){
+    if (this.ticket && columnId) {
       this.ticket.statusId = +columnId;
     }
   }
 
   @HostListener('click', ['$event'])
-  click(event: any){
+  click(event: any) {
     this.showContextMenu = false;
   }
 
   @HostListener('mouseleave', ['$event'])
-  mouseLeave(event: any){
+  mouseLeave(event: any) {
     this.showContextMenu = false;
   }
 
-  onRightClick(event: MouseEvent){
+  @HostListener('touchstart', ['$event'])
+  touchstart(event: any) {
+    this.allowedToMoveTicket = false;
+    this.touchEnded = false;
+    
+    setTimeout(() => {
+      if (!this.touchEnded) {
+        this.element.nativeElement.classList.add('dragging');
+        const board = document.querySelector<HTMLElement>('.board');
+        if (board) {
+          board.style.overflow = 'hidden';
+        }
+        this.allowedToMoveTicket = true;
+      }
+    }, 1000);
+  }
+
+  @HostListener('touchend', ['$event'])
+  touchend(event: any) {
+    this.touchEnded = true;
+    if (this.allowedToMoveTicket) {
+      this.element.nativeElement.classList.remove('dragging');
+
+      const board = document.querySelector<HTMLElement>('.board');
+      if (board) {
+        board.style.overflow = 'auto';
+      }
+
+      const columnId = document.elementsFromPoint(this.touchX, this.touchY).find((el: any) => el.className === 'board-column')?.getAttribute('data-columnId');
+      if (this.ticket && columnId) {
+        this.ticket.statusId = +columnId;
+      }
+    }
+  }
+
+  @HostListener('touchmove', ['$event'])
+  touchmove(event: any) {
+    this.touchX = event.targetTouches[0].pageX;
+    this.touchY = event.targetTouches[0].pageY;
+  }
+
+  onRightClick(event: MouseEvent) {
     event.preventDefault();
     this.showContextMenu = true;
-    setTimeout(()=>{
+    setTimeout(() => {
       const menu = this.element.nativeElement.querySelector('.context-menu');
       menu.style.top = `${event.clientY}px`;
       menu.style.left = `${event.clientX}px`;
-    },0)
+    }, 0)
 
   }
 }
