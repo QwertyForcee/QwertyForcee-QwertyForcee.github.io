@@ -50,10 +50,14 @@ export class BoardComponent implements OnInit, AfterViewChecked {
       headers.forEach((header: any) => {
 
         header.addEventListener('dragover', ()=>{
+          console.log('LOG: dragover');
+
           header.classList.add('chosen-board-header');
         });
 
         header.addEventListener('dragleave', ()=>{
+          console.log('LOG: dragleave');
+
           setTimeout(()=>{
             header.classList.remove('chosen-board-header');
           }, 0);

@@ -19,7 +19,7 @@ export class TicketComponent implements OnInit {
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
-    
+
   }
 
   get headerColor() {
@@ -44,11 +44,15 @@ export class TicketComponent implements OnInit {
 
   @HostListener('dragstart', ['$event'])
   dragStart(event: any){
+    console.log('LOG: dragStart');
+
     this.element.nativeElement.classList.add('dragging');
   }
 
   @HostListener('dragend', ['$event'])
   dragEnd(event: any){
+    console.log('LOG: dragend');
+
     this.element.nativeElement.classList.remove('dragging');
 
     const header = document.querySelector('.chosen-board-header');
