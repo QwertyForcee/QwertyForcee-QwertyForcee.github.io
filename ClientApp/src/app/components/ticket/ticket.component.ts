@@ -69,6 +69,10 @@ export class TicketComponent implements OnInit {
       this.ticket.statusId = +columnId;
       console.log('DRAGEND: ticket.statusId', this.ticket.statusId);
     }
+
+    document.querySelectorAll('.chosen-board-header').forEach((header)=> {
+      header.classList.remove('chosen-board-header');
+    });
   }
 
   @HostListener('click', ['$event'])
