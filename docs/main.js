@@ -1196,6 +1196,7 @@ class TicketComponent {
         this.showContextMenu = false;
     }
     touchstart(event) {
+        console.log('LOG: touchstart');
         this.allowedToMoveTicket = false;
         this.touchEnded = false;
         setTimeout(() => {
@@ -1211,6 +1212,7 @@ class TicketComponent {
     }
     touchend(event) {
         var _a;
+        console.log('LOG: touchend');
         this.touchEnded = true;
         if (this.allowedToMoveTicket) {
             this.element.nativeElement.classList.remove('dragging');
@@ -1225,6 +1227,7 @@ class TicketComponent {
         }
     }
     touchmove(event) {
+        console.log('LOG: touchmove');
         this.touchX = event.targetTouches[0].pageX;
         this.touchY = event.targetTouches[0].pageY;
     }

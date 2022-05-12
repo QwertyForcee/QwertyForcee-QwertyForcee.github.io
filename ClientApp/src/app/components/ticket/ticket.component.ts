@@ -79,9 +79,11 @@ export class TicketComponent implements OnInit {
 
   @HostListener('touchstart', ['$event'])
   touchstart(event: any) {
+    console.log('LOG: touchstart');
+
     this.allowedToMoveTicket = false;
     this.touchEnded = false;
-    
+
     setTimeout(() => {
       if (!this.touchEnded) {
         this.element.nativeElement.classList.add('dragging');
@@ -96,6 +98,8 @@ export class TicketComponent implements OnInit {
 
   @HostListener('touchend', ['$event'])
   touchend(event: any) {
+    console.log('LOG: touchend');
+
     this.touchEnded = true;
     if (this.allowedToMoveTicket) {
       this.element.nativeElement.classList.remove('dragging');
@@ -114,6 +118,8 @@ export class TicketComponent implements OnInit {
 
   @HostListener('touchmove', ['$event'])
   touchmove(event: any) {
+    console.log('LOG: touchmove');
+
     this.touchX = event.targetTouches[0].pageX;
     this.touchY = event.targetTouches[0].pageY;
   }
