@@ -60,7 +60,7 @@ export class BoardComponent implements OnInit, AfterViewChecked {
 
           setTimeout(()=>{
             header.classList.remove('chosen-board-header');
-          }, 0);
+          }, 1);
         });
       });
     }

@@ -1926,7 +1926,7 @@ class BoardComponent {
                     console.log('LOG: dragleave');
                     setTimeout(() => {
                         header.classList.remove('chosen-board-header');
-                    }, 0);
+                    }, 1);
                 });
             });
         }
