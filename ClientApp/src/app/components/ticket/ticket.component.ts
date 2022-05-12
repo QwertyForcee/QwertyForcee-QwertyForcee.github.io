@@ -61,9 +61,13 @@ export class TicketComponent implements OnInit {
     this.element.nativeElement.classList.remove('dragging');
 
     const header = document.querySelector('.chosen-board-header');
+    console.log('DRAGEND: header', header);
+
     const columnId = header?.getAttribute('data-columnId');
+    console.log('DRAGEND: columnId', columnId);
     if (this.ticket && columnId) {
       this.ticket.statusId = +columnId;
+      console.log('DRAGEND: ticket.statusId', this.ticket.statusId);
     }
   }
 
