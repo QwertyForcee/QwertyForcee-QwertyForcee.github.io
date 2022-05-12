@@ -1191,9 +1191,6 @@ class TicketComponent {
             this.ticket.statusId = +columnId;
             console.log('DRAGEND: ticket.statusId', this.ticket.statusId);
         }
-        document.querySelectorAll('.chosen-board-header').forEach((header) => {
-            header.classList.remove('chosen-board-header');
-        });
     }
     click(event) {
         this.showContextMenu = false;
@@ -1923,16 +1920,13 @@ class BoardComponent {
             headers.forEach((header) => {
                 header.addEventListener('dragover', () => {
                     console.log('LOG: dragover');
-                    document.querySelectorAll('.chosen-board-header').forEach((header) => {
-                        header.classList.remove('chosen-board-header');
-                    });
                     header.classList.add('chosen-board-header');
                 });
                 header.addEventListener('dragleave', () => {
                     console.log('LOG: dragleave');
-                    // setTimeout(()=>{
-                    //   header.classList.remove('chosen-board-header');
-                    // }, 1);
+                    setTimeout(() => {
+                        header.classList.remove('chosen-board-header');
+                    }, 50);
                 });
             });
         }
