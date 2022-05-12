@@ -56,19 +56,14 @@ export class TicketComponent implements OnInit {
 
   @HostListener('dragend', ['$event'])
   dragEnd(event: any) {
-    console.log('LOG: dragend');
-
     this.element.nativeElement.classList.remove('dragging');
-
     const header = document.querySelector('.chosen-board-header');
-    console.log('DRAGEND: header', header);
-
     const columnId = header?.getAttribute('data-columnId');
-    console.log('DRAGEND: columnId', columnId);
     if (this.ticket && columnId) {
       this.ticket.statusId = +columnId;
-      console.log('DRAGEND: ticket.statusId', this.ticket.statusId);
     }
+
+    document.querySelectorAll('.chosen-board-header').forEach(el=>el.classList.remove('chosen-board-header'));
   }
 
   @HostListener('click', ['$event'])

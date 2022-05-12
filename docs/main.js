@@ -1181,16 +1181,13 @@ class TicketComponent {
         this.element.nativeElement.classList.add('dragging');
     }
     dragEnd(event) {
-        console.log('LOG: dragend');
         this.element.nativeElement.classList.remove('dragging');
         const header = document.querySelector('.chosen-board-header');
-        console.log('DRAGEND: header', header);
         const columnId = header === null || header === void 0 ? void 0 : header.getAttribute('data-columnId');
-        console.log('DRAGEND: columnId', columnId);
         if (this.ticket && columnId) {
             this.ticket.statusId = +columnId;
-            console.log('DRAGEND: ticket.statusId', this.ticket.statusId);
         }
+        document.querySelectorAll('.chosen-board-header').forEach(el => el.classList.remove('chosen-board-header'));
     }
     click(event) {
         this.showContextMenu = false;
@@ -1920,14 +1917,14 @@ class BoardComponent {
             headers.forEach((header) => {
                 header.addEventListener('dragover', () => {
                     console.log('LOG: dragover');
+                    document.querySelectorAll('.chosen-board-header').forEach(el => el.classList.remove('chosen-board-header'));
                     header.classList.add('chosen-board-header');
                 });
-                header.addEventListener('dragleave', () => {
-                    console.log('LOG: dragleave');
-                    setTimeout(() => {
-                        header.classList.remove('chosen-board-header');
-                    }, 50);
-                });
+                // header.addEventListener('dragleave', ()=>{
+                //   setTimeout(()=>{
+                //     header.classList.remove('chosen-board-header');
+                //   }, 0);
+                // });
             });
         }
     }

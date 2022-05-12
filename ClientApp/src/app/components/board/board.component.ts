@@ -51,17 +51,16 @@ export class BoardComponent implements OnInit, AfterViewChecked {
 
         header.addEventListener('dragover', ()=>{
           console.log('LOG: dragover');
+          document.querySelectorAll('.chosen-board-header').forEach(el=>el.classList.remove('chosen-board-header'));
 
           header.classList.add('chosen-board-header');
         });
 
-        header.addEventListener('dragleave', ()=>{
-          console.log('LOG: dragleave');
-
-          setTimeout(()=>{
-            header.classList.remove('chosen-board-header');
-          }, 50);
-        });
+        // header.addEventListener('dragleave', ()=>{
+        //   setTimeout(()=>{
+        //     header.classList.remove('chosen-board-header');
+        //   }, 0);
+        // });
       });
     }
   }
