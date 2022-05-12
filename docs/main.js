@@ -82,7 +82,7 @@ ProjectOverviewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\code\projectManagementSystem\ClientApp\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! D:\code\pima\ClientApp\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -1175,9 +1175,11 @@ class TicketComponent {
         this.deletingTicket.emit((_a = this.ticket) === null || _a === void 0 ? void 0 : _a.id);
     }
     dragStart(event) {
+        console.log('LOG: dragStart');
         this.element.nativeElement.classList.add('dragging');
     }
     dragEnd(event) {
+        console.log('LOG: dragend');
         this.element.nativeElement.classList.remove('dragging');
         const header = document.querySelector('.chosen-board-header');
         const columnId = header === null || header === void 0 ? void 0 : header.getAttribute('data-columnId');
@@ -1876,9 +1878,11 @@ class BoardComponent {
             const headers = this.element.nativeElement.querySelectorAll('div.board-column');
             headers.forEach((header) => {
                 header.addEventListener('dragover', () => {
+                    console.log('LOG: dragover');
                     header.classList.add('chosen-board-header');
                 });
                 header.addEventListener('dragleave', () => {
+                    console.log('LOG: dragleave');
                     setTimeout(() => {
                         header.classList.remove('chosen-board-header');
                     }, 0);
