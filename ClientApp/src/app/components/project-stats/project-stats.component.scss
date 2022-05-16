@@ -1,21 +1,40 @@
+:host{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .charts-section {
-    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.charts-section app-chart {
+  height: 100%;
 }
 
 .info-section {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 10%;
+    margin-top: 10%;
 }
 
 .info-section p{
-    font-size: 200%;
+    font-size: 190%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 @media (max-width: 800px) {
-    .info-section {
+    .info-section, .charts-section {
         flex-direction: column;
+        overflow: scroll;
+    }
+
+    .charts-section app-chart {
+      margin-bottom: 20px;
     }
 }

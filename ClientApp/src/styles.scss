@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$light-purple: #F5E9FF;
+
 html{
   height: 100%;
   position: fixed;
@@ -30,4 +32,31 @@ footer{
   flex-shrink: 0;
   position: relative;
   width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+
+.blured {
+  filter: blur(4px);
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.chosen-board-header {
+  background: #F5E9FF !important;
+}
+
+.vertical-line {
+  height: 100%;
+  width: 5px;
+  background: #FFF852;
+  border-radius: 4px;
+  border: 1px solid #7E7E7E;
+  position: absolute;
+  z-index: 10;
 }

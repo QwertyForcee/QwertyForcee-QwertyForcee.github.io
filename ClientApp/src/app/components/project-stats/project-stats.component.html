@@ -1,5 +1,15 @@
-<section class="charts-section">
-
+<section class="charts-section" *ngIf="loadCharts">
+    <app-chart
+        [useInfoPanel]="true"
+        [data]="contibutorsData"
+        [limit]="10"
+        title="Ticket creators"
+    ></app-chart>
+    <app-chart
+        [useInfoPanel]="true"
+        [data]="mockData2"
+        title="Type of ticket"
+    ></app-chart>
 </section>
 <section class="info-section">
     <p>
@@ -9,7 +19,7 @@
 
     <p>
         <img src="../../../assets/member.png" width="40px" alt="">
-        10 members
+        {{contributersCount}} members
     </p>
 
     <p>

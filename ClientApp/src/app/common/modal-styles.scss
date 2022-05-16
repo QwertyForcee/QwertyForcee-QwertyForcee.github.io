@@ -13,8 +13,7 @@
   flex-direction: column;
 }
 
-
-.window-header {
+.modal-content-header {
   width: 100%;
   font-size: 120%;
   display: flex;
@@ -22,7 +21,7 @@
   box-sizing: border-box;
 }
 
-.window-body {
+.modal-content-body {
   font-size: 120%;
   display: flex;
 }

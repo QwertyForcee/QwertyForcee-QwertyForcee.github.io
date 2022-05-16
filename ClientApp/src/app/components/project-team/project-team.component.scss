@@ -1,38 +1,38 @@
 :host {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .project-info {
-    padding: 60px 0px 60px 0px;
-    background: #F5ECFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  padding: 60px 0px 60px 0px;
+  background: #F5ECFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .project-info h2 {
-    font-size: 40px;
-    letter-spacing: 0.12em;
-    font-weight: 500;
+  font-size: 40px;
+  letter-spacing: 0.12em;
+  font-weight: 500;
 }
 
 .project-info h3 {
-    font-size: 35px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
 
 
 }
 
 .project-team {
-    background: #BEF2E3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
+  background: #BEF2E3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
 }
 
 
@@ -43,65 +43,65 @@
   font-size: 125%;
   border-collapse: collapse;
 
-}
 
+  & thead th:nth-child(1) {
+    width: 25%;
+  }
 
-.members-table thead th:nth-child(1) {
-  width: 25%;
-}
+  & thead th:nth-child(2) {
+    width: 20%;
+  }
 
-.members-table thead th:nth-child(2) {
-  width: 20%;
-}
+  & thead th:nth-child(3) {
+    width: 20%;
+  }
 
-.members-table thead th:nth-child(3) {
-  width: 20%;
-}
+  & thead th:nth-child(4) {
+    width: 15%;
+  }
 
-.members-table thead th:nth-child(4) {
-  width: 15%;
-}
+  & thead {
+    background: #FFFFFF;
+  }
 
-.members-table thead {
-  background: #FFFFFF;
-}
+  & tbody {
+    background-color: #FFFFFF;
+  }
 
-.members-table tbody {
-  background-color: #FFFFFF;
-}
+  & th {
+    background: #BEF2E3;
+  }
 
-.members-table th {
-  background: #BEF2E3;
-}
+  & td {
+    padding: 20px;
 
-.members-table td {
-  padding: 20px;
+  }
 
-}
+  & hr {
+    display: block;
+    height: 4px;
+    width: 100%;
+    margin: 0;
+    background: #740B6A;
+  }
 
-.members-table hr {
-  display: block;
-  height: 4px;
-  width: 100%;
-  margin: 0;
-  background: #740B6A;
-}
+  &-row th, td {
+    padding: 20px;
+    border: 3px solid #D1B0DD;
 
-.members-table-row  th , td{
-  padding: 20px;
-  border: 3px solid #D1B0DD;
+  }
 
-}
+  &-header {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    border: #BEF2E3;
+  }
 
-.members-table-header {
-  border-collapse: separate;
-  border-spacing: 0 15px;
-  border: #BEF2E3;
-}
+  &-header th, tr {
+    color: #740B6A;
+    border: 1px solid #BEF2E3;
+  }
 
-.members-table-header th, tr {
-  color: #740B6A;
-  border: 1px solid #BEF2E3;
 }
 
 .action {
@@ -125,6 +125,6 @@
   .members-table {
     font-size: 90%;
   }
-  
+
 
 }

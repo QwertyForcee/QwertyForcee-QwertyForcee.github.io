@@ -1,0 +1,14 @@
+<h3 *ngIf="title">{{title}}</h3>
+<section class="chart">
+  <canvas class="chart-canvas">
+
+  </canvas>
+  <ul class="chart-info" *ngIf="useInfoPanel">
+    <li *ngFor="let d of data">
+      <div class="chart-info-square" [style.background]="d.color">
+
+      </div>
+      {{d.label}}
+    </li>
+  </ul>
+</section>

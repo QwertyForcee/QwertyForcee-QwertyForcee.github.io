@@ -17,34 +17,36 @@
   width: 55%;
   font-size: 120%;
   overflow: auto;
-}
 
-.projects-table thead th:nth-child(1) {
-  width: 5%;
-}
+  & thead th:nth-child(1) {
+    width: 5%;
+  }
 
-.projects-table thead th:nth-child(2) {
-  width: 40%;
-}
+  & thead th:nth-child(2) {
+    width: 40%;
+  }
 
-.projects-table thead th:nth-child(3) {
-  width: 25%;
-}
+  & thead th:nth-child(3) {
+    width: 25%;
+  }
 
-.projects-table thead th:nth-child(4) {
-  width: 10%;
-}
+  & thead th:nth-child(4) {
+    width: 10%;
+  }
 
-.projects-table thead th:nth-child(5) {
-  width: 5%;
-}
-.projects-table th td{
-  padding: 10px;
-}
+  & thead th:nth-child(5) {
+    width: 5%;
+  }
 
-.projects-table img{
-  width: 35px;
-  height: 35px;
+  & th td {
+    padding: 10px;
+  }
+
+  & img {
+    width: 35px;
+    height: 35px;
+  }
+
 }
 
 .date {

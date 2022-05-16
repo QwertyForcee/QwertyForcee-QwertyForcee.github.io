@@ -4,16 +4,16 @@
     fully free.</h1>
 </section>
 <section class="auth-section">
-  <form class="auth-form" action="">
+  <form class="auth-form" [formGroup]="signUpForm" (ngSubmit)="submit()">
     <p class="email-control">
-      <label for="email">email:</label>
-      <input id="email" type="email" placeholder="your email...">
+      <label for="email" >email:</label>
+      <input id="email" type="email" formControlName="email" placeholder="your email...">
     </p>
 
     <p class="password-control">
-      <label for="password">password:</label>
-      <input id="password" type="password" placeholder="*************">
+      <label for="password" >password:</label>
+      <input id="password" type="password" formControlName="password" placeholder="password...">
     </p>
-    <button class="submit" type="submit">SIGN IN</button>
+    <button class="submit" type="submit" >SIGN IN</button>
   </form>
 </section>
